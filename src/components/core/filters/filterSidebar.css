@@ -1,0 +1,150 @@
+.match-filters {
+  position: fixed;
+  right: -100%;
+  height: 100%;
+  top: 0;
+  transition: 0.3s ease-in-out;
+  width: 340px;
+  padding: 25px;
+  transition-delay: 0.1s;
+  background-color: #fff;
+  z-index: 999999;
+  
+}
+.match-filters::after {
+  position: absolute;
+  bottom: 95px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  content: "";
+  height: 1px;
+  background-color: #EAEDF6;
+}
+main#main:has(.match-filters.show-filter)::after {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  z-index: 1;
+  transition: 0.3s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.25);
+}   
+.match-filters.show-filter {
+    right: 0%;
+}
+.filtes-body{
+  height: calc(100% - 36px);
+  padding-top: 40px;
+}
+.filtes-body form,.filtes-body fieldset {
+    height: 100%;
+}
+.closefilters {
+  background-color: transparent;
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1px solid #dce5ef;
+}
+
+.filtes-body fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+   justify-content: space-between;
+}
+
+.field-row{
+    margin-bottom: 20px;
+
+}
+.filtes-body {
+  padding-top: 40px;
+  overflow: auto;
+}
+
+.filtes-body form strong {
+  color: #344054;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+.filter-header  h3 {
+  font-size: 22px;
+  font-weight: 500;
+  color: #1B1F25;
+}
+ .css-1n6sfyn-MenuList .css-tr4s17-option {
+  background-color: #fff5f1;
+  color: #495057;
+}
+.css-13cymwt-control {
+  min-height: 40px;
+}
+.css-1xc3v61-indicatorContainer svg {
+  width: 16px;
+}
+span.css-1u9des2-indicatorSeparator {
+  display: none;
+}
+.field-row .field-col input[type="checkbox"]
+{
+    margin-right: 8px;
+    border: 1px solid #103163;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    accent-color: #6C5878;
+}
+
+.submit-filter button {
+    display: block;
+    text-align: center;
+    width: 100%;
+    min-height: 40px;
+    border: 1px solid #6C5878;
+    background-color: #6C5878;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 4px;
+}
+
+.submit-filter button svg {
+    vertical-align: middle;
+    margin-left: 8px;
+}
+.checkbox-label
+{
+    margin-bottom: 10px;
+    color: #868E96;
+}
+.match-filters  .css-qbdosj-Input {
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.match-filters  .css-1fdsijx-ValueContainer {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.form-fields .css-13cymwt-control {
+  border: 1px solid rgba(207, 219, 213, 0.7);
+  border-radius: 6px;
+}
+@media only screen and (max-width: 767px) {
+  .match-filters{
+    padding: 20px 10px;
+  }
+  .match-filters::after{
+    content: none;
+  }
+} 
+@media only screen and (max-width: 340px) {
+  .match-filters{
+    width: 100%;
+    max-width: 100%;
+    padding: 20px 10px;
+  }
+}

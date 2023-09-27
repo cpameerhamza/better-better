@@ -1,0 +1,111 @@
+.manage__request {
+    background-color: var(--white);
+    border: 1px solid #E2EBFA;
+    border-radius: 6px;
+    max-width: 700px;
+    margin: auto;
+}
+.manage__request-title {
+    padding: 30px 25px;
+    border-bottom: 1px solid #E2EBFA;
+}
+.manage__request-title {
+    padding: 30px 25px;
+    border-bottom: 1px solid #E2EBFA;
+    color: #000000;
+}
+.manage__request-item {
+    padding: 25px 0;
+    margin: 0 25px;
+}
+.manage__request-item:not(:last-child) {
+    border-bottom: 1px solid rgba(226, 235, 250, 0.7);
+}
+.request__user img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.request__user-name {
+    margin-left: 10px;
+}
+.request__user img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.request__btns  {
+    display: flex;
+    justify-content: right;
+}
+.request__user-name {
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #101828;
+}
+.request__btn {
+    border: 1px solid #6C5878;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 4px;
+    padding:0 20px;
+    min-height: 36px;
+    letter-spacing: 0.03em;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    text-transform: capitalize;
+
+}
+.request__btn svg{
+    margin-right: 4px;
+}
+.accept__btn {
+    background:#6C5878;
+    color:#fff;
+}
+.accepted__btn:hover{
+    background:none;
+    color:#6C5878;
+}
+.reject__btn {
+    background-color: transparent;
+    color: #6C5878;
+}
+.rejected__btn {
+    background: #D92D20;
+    border: 1px solid #D92D20;
+    color: #F8F9FA;
+}
+.accept__btn:hover {
+    background-color: transparent;
+    color: #6C5878;
+}
+.reject__btn:hover {
+    background-color: #6C5878;
+    color: #F8F9FA;
+}
+.accept__btn:hover svg path {
+    stroke: #6C5878;
+}
+.rejected__btn:hover {
+    background-color: transparent;
+    color: #D92D20;
+}
+
+@media only screen and (max-width: 550px) {
+    .request__user {
+        width: 100%;
+    }
+    .request__btns  {
+        margin-top: 15px;
+        width: 100%;
+    }
+    .request__btns button
+    {
+        width: 100%;
+    }
+}

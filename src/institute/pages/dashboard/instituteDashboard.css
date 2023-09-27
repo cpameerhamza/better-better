@@ -1,0 +1,66 @@
+.result-penpal-history thead th svg {
+    vertical-align: middle;
+}
+.institute-dashboard tbody tr td:last-child svg {
+    width: 20px;
+}
+.institute-dashboard.letter-history-dashboard .submit-search {
+  background-color: #fff;
+}
+.cards__box.institute-card .main__card {
+    flex: 1;
+}
+@media only screen and (max-width: 1200px) {
+
+    .small-desktop-responsive thead {
+        visibility: hidden;
+        height: 0;
+        position: absolute;
+    }
+
+    .small-desktop-responsive tr {
+        display: block;
+        margin-bottom: 0.625em;
+    }
+
+    .small-desktop-responsive td {
+        border: 1px solid #E4E7EC;
+        border-bottom: none;
+        display: block;
+        font-size: 0.8em;
+        text-align: right;
+        position: relative;
+    }
+    .small-desktop-responsive td button{
+        color: #667085;
+    }
+
+    .small-desktop-responsive td::before {
+        content: attr(data-label);
+        font-weight: 500;
+        font-size: 12px;
+        color: #667085;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 10px;
+        height: max-content;
+        margin: auto 0;
+
+
+    }
+
+    .small-desktop-responsive td:last-child {
+        border-bottom: 1px solid #E4E7EC;
+    }
+}
+@media only screen and (max-width: 1100px){
+    .cards__box.institute-card .main__card {
+        flex: 1 calc(50% - 20px);
+    }
+}
+@media only screen and (max-width: 550px){
+    .cards__box.institute-card .main__card {
+        flex: 1 calc(100% - 0px);
+    }
+}

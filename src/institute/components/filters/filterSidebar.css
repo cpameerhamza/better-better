@@ -1,0 +1,10 @@
+.institute-filter .field-col input {
+    width: 100%;
+    border: 1px solid rgba(207, 219, 213, 0.7);
+    border-radius: 6px;
+    min-height: 40px;
+    padding: 0 16px;
+}
+.css-13cymwt-control {
+    min-height: 40px;
+}

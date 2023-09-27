@@ -1,0 +1,97 @@
+.popup{
+    position: fixed;
+    width: 100%;
+    top:0;
+    bottom:0;
+    left:0;
+    background:#fff;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    z-index: 5;
+}
+.popup .css-13cymwt-control,.popup select{
+    background: url("../../../assets/images/dropdown.png") no-repeat 98% 50%;
+
+}
+.popup.show{
+    display: flex;
+}
+.letter-form{
+    width: 100%;
+    max-width: 545px;
+    margin:0 auto;
+    padding:24px;
+    box-shadow: 0 4px 28px 0 #00000040;
+    border-radius: 8px;
+    margin:0 20px;
+}
+.letter-header .close-icon {
+    padding: 4px 8px;
+    border: 1px solid #DCE5EF;
+    border-radius: 8px;
+}
+
+.letter-header {
+    margin-bottom: 40px;
+}
+.letter-form .css-qbdosj-Input {
+    padding: 0;
+    margin: 0;
+}
+
+.letter-form .css-1fdsijx-ValueContainer {
+    padding: 0;
+}
+
+.form-row span {
+    font-weight: 500;
+    font-size: 14px;
+    color: #0D2A52;
+    margin-bottom: 4px;
+    display: block;
+}
+.form-row
+{
+    margin-bottom:16px;
+    position: relative;
+}
+
+.form-row input,.form-row select,.letter-form .css-13cymwt-control {
+    width: 100%;
+    border: 1px solid rgba(207, 219, 213, 0.7);
+    border-radius: 8px;
+    min-height:40px;
+    padding: 0 16px;
+
+}
+.form-row select
+
+{
+    font-weight: 500;
+    font-size: 14px;
+color: #0D2A52;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.form-row .css-1hb7zxy-IndicatorsContainer{
+    display: none;
+}
+.action-button
+{
+  margin-top: 30px;
+}
+.form-row button {
+    padding: 12px 16px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #33475B;
+    text-transform: uppercase;
+    border-radius: 7px;
+    border: 1px solid #D0D5DD;
+}
+.form-row button[type="submit"]{
+    margin-left: 12px;
+    background: #6C5878;
+    color: white;
+}

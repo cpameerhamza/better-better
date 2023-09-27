@@ -1,0 +1,25 @@
+@import url("./assets/css/global.css");
+
+
+.main__body {
+    width: calc(100% - 240px);
+}
+.main__body-content {
+    background-color: #F6F9FC;
+    padding: 40px;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+}
+.site__container{
+    max-width: 1280px;
+    width: 100%;
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.registration-process {
+    padding: 0;
+}
+.registration-process .signup__form, .registration-process .signup__content {
+    min-height: calc(100vh - 386px);
+}

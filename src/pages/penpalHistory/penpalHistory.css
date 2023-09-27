@@ -1,0 +1,495 @@
+.penpal-chat-history {
+    width: 100%;
+    max-width: 42%;
+    background: #FFFFFF;
+    border: 1px solid #E2EBFA;
+    border-radius: 6px;
+
+}
+.penpal-chat-history-header {
+    padding: 20px;
+    border-bottom: 1px solid #E2EBFA;
+}
+.penpal-chat-history h6 {
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.penpal-chat-history input {
+    width: 100%;
+    min-height: 40px;
+    padding: 10px 40px 10px 16px;
+    border: 1px solid #DDE1E4;
+    border-radius: 4px;
+    transition: 0.7s all ease-in-out;
+}
+.penpal-chat-history input:focus-within{
+    border-color: #000000;
+}
+
+.penpal-chat-history input::placeholder {
+    color: #0A233C;
+    opacity: 0.6;
+    font-size: 14px;
+}
+fieldset{
+    border: none;
+}
+.search-chat{
+    position: relative;
+}
+button{
+    background: transparent;
+    border: none;
+}
+.search-chat button{
+    position: absolute;
+    top: 0;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    margin: auto 0;
+    bottom: 0;
+}
+.penpal-card{
+    padding: 24px 20px;
+    transition:0.7s all;
+    cursor: pointer;
+    position:relative;
+    order: 2;
+}
+.penpal-card:has(.active-tag) {
+    order: 1;
+}
+.penpal-card .active-tag {
+    position: absolute;
+    right: 34px;
+    top: 0px;
+    width: 65px;
+    height: 26px;
+    background: #ECFDF3;
+    padding: 3px 0;
+    color: #027A48;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 30px;
+    bottom: 0;
+    margin: auto 0;
+}
+.cols__holder{
+    height:100%;
+}
+.active-card,.penpal-card:hover,.activedpenpal {
+    background-color: #FFF7F4;
+}
+.penpal-card:not(:last-child){
+    border-bottom:  1px solid rgba(226, 235, 250, 0.7);
+}
+.penpal-card:last-child:has(.active-tag){
+    border-bottom:  1px solid rgba(226, 235, 250, 0.7);
+}
+.chats-with-penpal-history {
+    /* padding: 30px 0 50px; */
+    padding:30px 0 50px;
+    display: flex;
+    flex-direction: column;
+}
+.penpal-info span {
+
+    font-weight: 500;
+    font-size: 14px;
+    color: #101828;
+}
+.penpal-info p{
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+}
+.penpal-name {
+    margin-left: 10px;
+}
+
+.penpal-dp svg, .penpal-dp img {
+    display: block;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+.penpal-dp img{
+    object-fit: cover;
+}
+.select-area h2 {
+    margin: 0;
+    font-weight: 500;
+    font-size: 22px;
+}
+.select-area {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.penpal-dp {
+    padding: 3px;
+    border-radius: 50%;
+    background-color: #FEF0EB;
+}
+.disconnect-with-penpal:hover
+{
+    cursor: pointer;
+}
+.disconnect-with-penpal {
+    position: relative;
+}
+.disconnect {
+    position: absolute;
+    padding: 16px 14px;
+    background-color: #F2F2F2;
+    min-width: 189px;
+    border-radius: 10px;
+    right: 0px;
+    display: none;
+    box-shadow: 1px 1px 22px rgba(0, 0, 0, 0.05);
+}
+.show-disconnect-bar .disconnect{
+    display: block;
+}
+.disconnect a {
+    font-weight: 400;
+    font-size: 14px;
+    color: #33475B;
+}
+.mobile-penpal-menu {
+    display: none;
+}
+
+.penpal-message-box {
+    width: 100%;
+    max-width: 56%;
+    background: #FFFFFF;
+    border: 1px solid #E2EBFA;
+    border-radius: 6px;
+}
+
+.penpal-message-box-header
+{
+    padding: 20px;
+    border-bottom: 1px solid #E2EBFA;
+}
+.disconnect-penpal a ,
+.disconnect-penpal button {
+    background: #868E96;
+    letter-spacing: 0.03em;
+    text-transform: capitalize;
+    color: #F8F9FA;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 22px;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 4px;
+    border: 1px solid #868E96;
+}
+.penpal-chat-box {
+    padding: 40px 75px;
+    position: relative;
+    overflow: hidden;
+
+}
+.otheruser-penpal-end h6 {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #101828;
+}
+
+.otheruser-penpal-end p svg {
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+.current-penpal-end {
+    background-color: #6C5878;
+    padding: 12px;
+    border-radius: 8px;
+    position: relative;
+    color: #fff;
+
+}
+
+.current-penpal-end p {
+    font-weight: 500;
+    font-size: 12px;
+    margin-top: 6px;
+}
+.otheruser-penpal-end p {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.penpal-chat-box .message-with-penpal:nth-child(odd) p{
+  justify-content: flex-end;
+}
+.penpal-chat-box:has(.message-with-penpal)::after {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 2px;
+    background: #CED4DA;
+    opacity: 0.3;
+    content: "";
+    top: 55px;
+}
+
+.no-letter-found {
+    font-size: 18px;
+    text-align: center;
+    display: block;
+    font-weight: 600;
+}
+.penpalmessage > * {
+    height: calc(100vh - 140px);
+    overflow-y: auto;
+}
+
+
+.current-penpal-end::after {
+    position: absolute;
+    top: 18px;
+    margin: auto 0;
+    left: -5px;
+    width: 10px;
+    height: 10px;
+    border: 1px  solid #6C5878;
+    content: "";
+    transform: rotate(45deg);
+    background-color: #6C5878;
+}
+.message-with-penpal {
+    position: relative;
+}
+
+.message-with-penpal::after {
+    position: absolute;
+    left:  0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    content: "";
+    width: 50px;
+    height: 50px;
+    background-image: url("../../assets/images/clock.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 99;
+
+}
+.otheruser-penpal-end {
+    width: 100%;
+    max-width: calc(50% - 50px);
+    text-align: right;
+    position: relative;
+    z-index: 99;
+}
+.current-penpal-end{
+    width: 100%;
+    max-width: calc(50% - 50px);
+    position: relative;
+    z-index: 99;
+}
+.penpal-chat-box .message-with-penpal:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.penpal-chat-box .message-with-penpal:nth-child(even) .current-penpal-end {
+    background-color: #F2F4F7;
+    color: #323C45;
+}
+.penpal-chat-box .message-with-penpal:nth-child(even) .current-penpal-end::after{
+    background-color: #F2F4F7;
+    border-color: #F2F4F7;
+    right: -5px;
+    left: inherit;
+}
+.penpal-chat-box .message-with-penpal:not(:last-child){
+    margin-bottom: 50px;
+}
+.penpal-chat-box .message-with-penpal:nth-child(even) .otheruser-penpal-end
+{
+    text-align: left;
+}
+
+.penpal-chat-box .message-with-penpal:nth-child(even) .current-penpal-end svg path{
+ fill:#000000
+}
+.disconnect-penpal  svg{
+    display: none;
+}
+.penpal-card.false .penpal-dp {
+    background-color: #E9ECEF;
+}
+.penpal-card.false:has(.active-tag) .penpal-dp{
+    background-color: #fef0eb;
+}
+@media  only screen and (max-width: 1400px) {
+    .penpal-chat-box{
+        padding: 20px;
+    }
+}
+@media only screen and (max-width: 1280px) {
+    .otheruser-penpal-end p{
+        font-size: 12px;
+    }
+    .otheruser-penpal-end {
+        max-width: calc(50% - 35px);
+    }
+    .current-penpal-end{
+        max-width: calc(50% - 35px);
+    }
+}
+@media  only screen and (max-width: 1024px) {
+    .otheruser-penpal-end h6{
+        font-size: 12px;
+    }
+    .otheruser-penpal-end p {
+        font-size: 12px;
+    }
+    .current-penpal-end {
+        width: 100%;
+        max-width: calc(50% - 40px);
+    }
+    .otheruser-penpal-end{
+        max-width: calc(50% - 40px); 
+    }
+    .message-with-penpal::after{
+        width: 40px;
+        height: 40px;
+    }
+    .penpal-message-box.mobile-penpal-message-box {
+        display: block;
+        width: calc(100% - 120px);
+        left: 78px;
+        top: 89px;
+        margin: 0 auto;
+        right: 0;
+        position: fixed;
+        max-width: 100%;
+        padding: 0;
+        height: calc(100vh - 140px);
+    }
+    .penpal-chat-history{
+        max-width: 100%;
+
+    }
+    .penpal-message-box{
+      
+        display: none;
+    }
+    .mobile-penpal-menu{
+        display: block;
+    }
+    .penpal-message-box-header .penpal-info {
+        order: 2;
+    }
+    .penpal-message-box-header .disconnect-penpal {
+        order: 3;
+    }
+    .penpal-message-box-header .mobile-penpal-menu {
+        order: 1;
+    }
+    .disconnect-penpal button{
+        padding:8px 10px ;
+    }
+    .penpal-dp svg, .penpal-dp img {
+        width: 36px;
+        height: 36px;
+    }
+    .penpal-message-box-header .penpal-name{
+        margin: 0;
+    }
+    .penpal-message-box-header .penpal-info{
+        gap: 10px 0;
+        flex-direction: column;
+    }
+  
+   
+}
+@media only screen and (max-width: 767px) {
+    .penpal-message-box.mobile-penpal-message-box{
+        left: 50px;
+        top: 88px;
+        width: calc(100% - 90px);
+    }
+    .penpal-message-box-header {
+        padding: 20px 10px;
+    }
+    .penpal-info span
+    {
+        font-size: 12px;
+    }
+    .disconnect-penpal svg {
+        display: block;
+    }
+    .disconnect-penpal button{
+        display: none;
+    }
+    
+    .otheruser-penpal-end {
+        margin-top: 0px;
+    }
+    .penpal-card .active-tag{
+        font-size: 0;   
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
+    .penpal-card .active-tag::after{
+        position: absolute;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        content: "";
+        border-radius: 50%;
+        bottom: 0;
+        margin: auto;
+        left: 0;
+        right: 0;
+         background-color: green;
+    }
+
+}
+@media only screen and (max-width:550px) {
+    .current-penpal-end{
+        padding: 5px;
+    }
+    .penpal-chat-box{
+        padding: 20px 10px;
+    }
+    .penpal-message-box.mobile-penpal-message-box {
+        top: 75px;
+        width: calc(100% - 70px);
+    }
+    .penpal-chat-box .message-with-penpal p{
+         flex-direction: column;
+         align-items: unset;
+    }
+    .penpal-chat-box .message-with-penpal p svg{
+        display: none;
+    }
+    .current-penpal-end {
+        width: 100%;
+        max-width: calc(50% - 25px);
+    }
+    .otheruser-penpal-end{
+        max-width: calc(50% - 25px); 
+    }
+    .message-with-penpal::after {
+        width: 30px;
+        height: 30px;
+    }
+    .penpal-card{
+        padding: 20px 10px;
+    }
+}

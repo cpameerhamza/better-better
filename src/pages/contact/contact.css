@@ -1,0 +1,52 @@
+.template h3 {
+    margin: 0 0 22px;
+}
+.contact-cols .text {
+    width: 50%;
+}
+.contact-cols {
+    display: flex;
+}
+
+.contact-cols .form {
+    margin-left: auto;
+    width: 43%;
+}
+
+.contact-cols .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact-cols textarea {
+    padding:10px 16px;
+    font:14px/19px 'Poppins', sans-serif;
+    resize: none;
+    height: 110px;
+    border-radius: 8px;
+    border: 1px solid rgba(207, 219, 213, 0.7);
+}
+.contact-cols .signup-btn {
+    height: 55px;
+    font-weight: 500;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+}
+.contact-cols .form-row button[type="submit"] {
+    margin: 0;
+}
+.contact-cols .error-msg {
+    position: static;
+}
+
+@media(max-width:767px){
+    .contact-cols{
+        flex-direction: column;
+    }
+    .contact-cols .text,
+    .contact-cols .form{
+        width:100%;
+    }
+}

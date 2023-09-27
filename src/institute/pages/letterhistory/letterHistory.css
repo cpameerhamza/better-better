@@ -1,0 +1,35 @@
+.result-penpal-history table  tr h6 {
+    font-weight: 400;
+    font-size: 14px;
+    display: inline-block;
+}
+.result-penpal-history table  tr h6 span{
+    display: inline-block;
+}
+.result-penpal-history table tbody tr td:first-child span{
+    margin: 0;
+}
+.letter-history-dashboard .result-penpal-history table tbody tr td img,.letter-history-dashboard .result-penpal-history table tbody tr td svg {
+    vertical-align: bottom;
+}
+.letter-history-dashboard .submit-search {
+    margin: 0 12px 0 0;
+    background-color: #6C5878;
+
+}
+.letter-history-dashboard .submit-search button {
+    color: #fff;
+    width: 100%;
+}
+@media only screen and (max-width: 1280px) {
+    .result-penpal-history table tr h6{
+        display: block;
+        margin-top: 5px;
+        
+    }
+}
+@media only screen and (max-width: 1280px) {
+    .result-penpal-history table tr h6{
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,349 @@
+.table-area {
+    background: #FFFFFF;
+    border: 1px solid #E4E7EC;
+    box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.1), 0px 2px 4px -2px rgba(16, 24, 40, 0.06);
+    border-radius: 8px;
+}
+
+.search-penpal-history {
+    padding: 20px 24px;
+    border-bottom: 1px solid  #E4E7EC;
+}
+.search-penpal-history > *{
+    width: 100%;
+    max-width: 50%;
+}
+.filter-penpal-history {
+    display: flex;
+    justify-content: flex-end;
+}
+.search-penpal-history-content h6 {
+    font-weight: 500;
+    font-size: 18px;
+    color: #101828;
+    margin-bottom: 6px;
+}
+
+.search-penpal-history-content h6 span {
+    font-weight: 400;
+    font-size: 14px;
+    font-family: 'Inter';
+    color: #667085;
+}
+fieldset{
+    border: none;
+}
+.filter-row input {
+    border: 1px solid #D0D5DD;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+    max-width: 225px;
+    padding-right:  20px;
+    padding-left: 40px;
+    min-height: 44px;
+    transition: 0.5s all ease-in-out;
+}
+.filter-row input:focus-within{
+    min-width: 300px;
+}
+
+.filter-row input::placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    color: #667085;
+}
+
+.filter-col
+{
+    position: relative;
+}
+button.filtericon {
+    position: absolute;
+    left: 16px;
+    top: 4px;
+    bottom: 0;
+    margin: auto 0;
+}
+.submit-search {
+    border: 1px solid #D0D5DD;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+    padding: 9px 16px;
+    margin-left: 12px;
+    text-align: center;
+}
+.submit-search.add{
+    padding:0;
+}
+.submit-search.add button{
+    padding:9px 16px;
+}
+.submit-search  button svg {
+    vertical-align: middle;
+}
+
+.submit-search button {
+    font-weight: 500;
+    font-size: 14px;
+    color: #344054;
+    text-transform: capitalize;
+}
+.search-penpal-history-pagnation {
+    padding: 13px 24px;
+}
+.move button svg{
+    vertical-align: middle;
+}
+.search-penpal-history-pagnation {
+    padding: 13px 24px;
+}
+
+.move button {
+    border: 1px solid #D0D5DD;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+    padding: 8px 14px;
+    color: #344054;
+    text-transform: capitalize;
+
+}
+.move button[disabled]{
+    cursor: default;
+}
+
+.jump-to-history li button {
+    padding: 8px 16px;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 8px;
+    color: #667085;
+}
+.jump-to-history li.active-history button {
+    color: #323C45;
+}
+.active-history button{
+   background-color: #FFF5F1;
+}
+
+.result-penpal-history table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.result-penpal-history thead {
+    background-color: #F9FAFB;
+}
+
+.result-penpal-history thead th {
+
+    padding: 13px 24px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    color: #667085;
+}
+.result-penpal-history thead tr th svg {
+    vertical-align: middle;
+}
+table tbody tr td {
+    padding: 20px 24px;
+}
+.result-penpal-history table tbody tr td img,
+.result-penpal-history table tbody tr td svg{
+    vertical-align: top;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: inline-block;
+    margin-right: 12px;
+    vertical-align: middle;
+}
+.result-penpal-history table tbody tr td span{
+    font-size: 14px;
+    color: #667085;
+}
+.result-penpal-history table tbody tr{
+    border-bottom: 1px solid  #E4E7EC ;
+}
+tr.status td.successfull span,
+tr.status td.pending span,
+tr.status td.received span{
+    background-color: #ECFDF3;
+    font-size: 12px;
+    padding: 3px 8px 3px 16px;
+    border-radius:16px ;
+    font-weight: 500;
+    position: relative;
+    
+}
+tr.status td.successfull span{
+    color: #027A48;
+}
+tr.status td.pending span{
+    background:#FFFAEB;
+    color:#B54708;
+}
+tr.status td.disabled span{
+    background:#FEF3F2;
+    color:#B42318;
+}
+tr.status td.disabled span::after{
+    background:#F04438;
+}
+tr.status td.successfull span::after,
+tr.status td.received span::after,
+tr.status td.pending span::after
+{
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin: auto 0px;
+
+}
+tr.status td.pending span::after{
+    background:#F79009;
+}
+.result-penpal-history table tbody tr td:first-child span{
+margin-left: 12px;
+}
+td.successfull span::after{
+    background-color:#12B76A;
+}
+.search-penpal-history-content span {
+    color: #667085;
+}
+.Letter.Status button {
+    padding: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    background-color: #6C5878;
+    color: white;
+    border: 1px solid #D0D5DD;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+}
+@media only screen and (max-width: 1280px) {
+    .main__body-content{
+        padding: 20px;
+    }
+    .submit-search{
+        margin-left: 5px;
+    }
+    .filter-row input {
+        max-width: 200px;
+    }
+}
+
+
+@media screen and (max-width: 992px) {
+    .search-penpal-history > * {
+        max-width: 100%;
+    }
+    .filter-penpal-history > *{
+        width: 100%;
+        margin-top: 15px;
+    }
+    .filter-penpal-history fieldset{
+        justify-content: space-between;
+    }
+    .submit-search{
+        width: 24%;
+        margin: 0 !Important;
+    }
+    .filter-penpal-history .filter-row {
+        width: 100%;
+        max-width: 75%;
+    }
+    .filter-penpal-history .filter-row input{
+        width: 100% ;
+        max-width: 100%;
+    }
+    .responsive thead {
+        visibility: hidden;
+        height: 0;
+        position: absolute;
+    }
+
+    .responsive tr {
+        display: block;
+        margin-bottom: 0.625em;
+    }
+
+    .responsive td {
+        border: 1px solid #E4E7EC;
+        border-bottom: none;
+        display: block;
+        font-size: 0.8em;
+        text-align: right;
+        position: relative;
+    }
+
+    .responsive td::before {
+        content: attr(data-label);
+        font-weight: 500;
+        font-size: 12px;
+        color: #667085;
+        position: absolute;
+        left: 10px;
+        top: 0;
+        bottom: 0;
+        height: max-content;
+        margin: auto 0;
+    }
+
+    .responsive td:last-child {
+        border-bottom: 1px solid #E4E7EC;
+    }
+}
+@media  only screen and (max-width: 767px) {
+    .filter-penpal-history .filter-row{
+        max-width: 100%;
+    }
+    .filter-penpal-history .d__flex{
+     gap: 10px 0;
+    }
+    .filter-penpal-history:has(.add) .d__flex {
+        flex-direction: column-reverse;
+    }
+    .submit-search {
+        width: 100%;
+    }
+    .result-penpal-history table tbody tr td span{
+        font-size: 12px;
+    }
+    .small-desktop-responsive td{
+        padding: 20px 10px;
+    }
+    /* ul.d__flex.jump-to-history {
+        width: 100%;
+        max-width: 100%;
+        justify-content: center;
+        margin-bottom: 20px;
+        order: 1;
+    }
+    .move {
+        order: 2;
+    } */
+    .move button{
+        font-size: 0;
+    }
+    .search-penpal-history-pagnation{
+        padding: 0px 10px 10px;
+        
+    }
+}
+@media  only screen and (max-width: 550px) {
+        .main__body-content{
+            padding: 10px;
+        }
+        .responsive td{
+            padding: 20px 10px;
+        }
+}
