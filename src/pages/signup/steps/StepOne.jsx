@@ -295,7 +295,6 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
                 <Select
                   closeMenuOnSelect={true}
                   components={{ animatedComponents, Placeholder }}
-                  placeholder={"Search"}
                   options={institutes ? institutes[0] : "No records found."}
                   className="basic-multi-select"
                   hideSelectedOptions={false}
