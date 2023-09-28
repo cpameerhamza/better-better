@@ -318,7 +318,7 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
               >
                 <label>Phone Number *</label>
                 <input
-                  type="text"
+                  type="number"
                   name="phone_no"
                   placeholder="Enter your number"
                   value={values.phone_no}
@@ -360,7 +360,7 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
                 <div className="form__group half__field">
                   <label>School contact phone *</label>
                   <input
-                    type="text"
+                    type="number"
                     name="institute_contact_number"
                     placeholder="Enter school contact number"
                     value={values.institute_contact_number}

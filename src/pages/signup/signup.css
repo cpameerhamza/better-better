@@ -525,6 +525,18 @@ p.interest__error {
 .signup__title p {
   padding-top: 10px;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 @media only screen and (max-width: 550px) {
   .form__search {
     margin-bottom: 10px;

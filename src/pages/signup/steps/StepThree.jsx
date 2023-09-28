@@ -139,428 +139,425 @@ const StepThree = ({
   };
   return (
     <>
-      {
-        // formSent && user?.isInstitute ? "success wala" : formSent && !user?.isInstitute ? "vertification email wala" : "pora page"
-        formSent && user?.isInstitute ? (
-          <Success />
-        ) : formSent && !user?.isInstitute ? (
-          <VerificationEmail formKeys={formKeys} />
-        ) : (
-          <form onSubmit={handleSubmit} className="registration-process-steps">
-            <div className="signup__form">
-              <div className="signup__form-one d__flex d__flex-h-between gap-2">
-                <div className="form__group full__field">
-                  <label>Where did you grow up? *</label>
-                  <input
-                    type="text"
-                    name="where_you_grow_up"
-                    placeholder="Enter answer here"
-                    value={values.where_did_you_grow_up}
-                    onChange={(e) => handleChange(e)}
-                    onBlur={handleBlur}
-                  />
-                  <p className="error-msg">
-                    {errors.where_you_grow_up && touched.where_you_grow_up
-                      ? errors.where_you_grow_up
-                      : null}
-                  </p>
-                </div>
-                <div className="form__group full__field">
-                  <label>Your current location? *</label>
-                  <div className="form__box">
-                    <Select
-                      closeMenuOnSelect={true}
-                      placeholder={"Select your current state"}
-                      components={{
-                        animatedComponents,
-                        Placeholder,
-                        DropdownIndicator,
-                      }}
-                      isMulti={false}
-                      options={states}
-                      className="basic-multi-select"
-                      hideSelectedOptions={false}
-                      onChange={(e) => handleCurrentState(e)}
-                    />
-                    <p className="error-msg">
-                      {errors.current_state && touched.current_state
-                        ? errors.current_state
-                        : null}
-                    </p>
-                  </div>
-                </div>
-                <div className="form__group full__field">
-                  <label>What states have you lived in? *</label>
+      {formSent && user?.isInstitute ? (
+        <Success />
+      ) : formSent && !user?.isInstitute ? (
+        <VerificationEmail formKeys={formKeys} />
+      ) : (
+        <form onSubmit={handleSubmit} className="registration-process-steps">
+          <div className="signup__form">
+            <div className="signup__form-one d__flex d__flex-h-between gap-2">
+              <div className="form__group full__field">
+                <label>Where did you grow up? *</label>
+                <input
+                  type="text"
+                  name="where_you_grow_up"
+                  placeholder="Enter answer here"
+                  value={values.where_did_you_grow_up}
+                  onChange={(e) => handleChange(e)}
+                  onBlur={handleBlur}
+                />
+                <p className="error-msg">
+                  {errors.where_you_grow_up && touched.where_you_grow_up
+                    ? errors.where_you_grow_up
+                    : null}
+                </p>
+              </div>
+              <div className="form__group full__field">
+                <label>Your current location? *</label>
+                <div className="form__box">
                   <Select
-                    closeMenuOnSelect={false}
+                    closeMenuOnSelect={true}
+                    placeholder={"Select your current state"}
                     components={{
                       animatedComponents,
                       Placeholder,
                       DropdownIndicator,
                     }}
-                    placeholder={"Select your states"}
-                    isMulti
+                    isMulti={false}
                     options={states}
                     className="basic-multi-select"
                     hideSelectedOptions={false}
-                    onChange={(e) =>
-                      setFieldValue(
-                        "state_ids",
-                        e.map((selectedValue) => selectedValue.value)
-                      )
-                    }
-                  />
-                  <input
-                    type="text"
-                    name="state_ids"
-                    placeholder="Select Your Institute"
-                    value={values.state_ids}
-                    onChange={handleChange}
-                    className="hidden"
-                    onBlur={handleBlur}
+                    onChange={(e) => handleCurrentState(e)}
                   />
                   <p className="error-msg">
-                    {errors.state_ids && touched.state_ids
-                      ? errors.state_ids
+                    {errors.current_state && touched.current_state
+                      ? errors.current_state
                       : null}
                   </p>
-                </div>
-                <div className="form__group full__field">
-                  <label>What was your career? *</label>
-                  <input
-                    type="text"
-                    name="career"
-                    placeholder="Enter answer here"
-                    value={values.career}
-                    onChange={(e) => setFieldValue("career", e.target.value)}
-                    onBlur={handleBlur}
-                  />
-                  <p className="error-msg">
-                    {errors.career && touched.career ? errors.career : null}
-                  </p>
-                </div>
-                <div className="form__group full__field">
-                  <label>Favorite Subject in school? *</label>
-                  <Select
-                    closeMenuOnSelect={false}
-                    components={{
-                      animatedComponents,
-                      Placeholder,
-                      DropdownIndicator,
-                    }}
-                    placeholder={"Select favorite subject"}
-                    isMulti
-                    options={subjects}
-                    className="basic-multi-select"
-                    hideSelectedOptions={false}
-                    onChange={(e) =>
-                      setFieldValue(
-                        "subject_ids",
-                        e.map((selectedValue) => selectedValue.value)
-                      )
-                    }
-                  />
-                  <input
-                    type="text"
-                    name="subject_ids"
-                    placeholder="Select Your Institute"
-                    value={values.subject_ids}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className="hidden"
-                  />
-                  <p className="error-msg">
-                    {errors.subject_ids && touched.subject_ids
-                      ? errors.subject_ids
-                      : null}
-                  </p>
-                </div>
-                <div className="form__group full__field">
-                  <label>Do you play a musical instrument? *</label>
-                  <Select
-                    closeMenuOnSelect={false}
-                    components={{
-                      animatedComponents,
-                      Placeholder,
-                      DropdownIndicator,
-                    }}
-                    placeholder={"Select musical instrument"}
-                    isMulti
-                    options={instruments}
-                    className="basic-multi-select"
-                    hideSelectedOptions={false}
-                    onChange={(e) =>
-                      setFieldValue(
-                        "musical_instrument_ids",
-                        e.map((selectedValue) => selectedValue.value)
-                      )
-                    }
-                  />
-                  <input
-                    type="text"
-                    name="musical_instrument_ids"
-                    placeholder="Select Your Institute"
-                    value={values.musical_instrument_ids}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className="hidden"
-                  />
-                  <p className="error-msg">
-                    {errors.musical_instrument_ids &&
-                    touched.musical_instrument_ids
-                      ? errors.musical_instrument_ids
-                      : null}
-                  </p>
-                </div>
-                <div className="form__group full__field">
-                  <label>Do you like dogs, cats or fish? *</label>
-                  <Select
-                    closeMenuOnSelect={false}
-                    components={{
-                      animatedComponents,
-                      Placeholder,
-                      DropdownIndicator,
-                    }}
-                    placeholder={"Select what you like"}
-                    isMulti
-                    options={pets}
-                    className="basic-multi-select"
-                    hideSelectedOptions={false}
-                    onChange={(e) =>
-                      setFieldValue(
-                        "pet_ids",
-                        e.map((selectedValue) => selectedValue.value)
-                      )
-                    }
-                  />
-                  <input
-                    type="text"
-                    name="pet_ids"
-                    placeholder="Select Your Institute"
-                    value={values.pet_ids}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className="hidden"
-                  />
-                  <p className="error-msg">
-                    {errors.pet_ids && touched.pet_ids ? errors.pet_ids : null}
-                  </p>
-                </div>
-                <div className="form__group full__field">
-                  <label>Do you like summer or winter better? *</label>
-                  <Select
-                    closeMenuOnSelect={true}
-                    components={{
-                      animatedComponents,
-                      Placeholder,
-                      DropdownIndicator,
-                    }}
-                    placeholder={"Select Season"}
-                    options={[
-                      { value: "summer", label: "Summer" },
-                      { value: "winter", label: "Winter" },
-                    ]}
-                    className="basic-multi-select"
-                    hideSelectedOptions={false}
-                    onChange={(e) => setFieldValue("season", e.value)}
-                  />
-                  <p className="error-msg">
-                    {errors.season && touched.season ? errors.season : null}
-                  </p>
-                </div>
-                <div className="form__group full__field">
-                  <label>Do you speak any languages? *</label>
-                  <Select
-                    closeMenuOnSelect={false}
-                    components={{
-                      animatedComponents,
-                      Placeholder,
-                      DropdownIndicator,
-                    }}
-                    placeholder={"Select Language"}
-                    isMulti
-                    options={languages}
-                    className="basic-multi-select"
-                    hideSelectedOptions={false}
-                    onChange={(e) =>
-                      setFieldValue(
-                        "language_ids",
-                        e.map((selectedValue) => selectedValue.value)
-                      )
-                    }
-                  />
-                  <input
-                    type="text"
-                    name="language_ids"
-                    placeholder="Select Your Institute"
-                    value={values.language_ids}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className="hidden"
-                  />
-                  <p className="error-msg">
-                    {errors.language_ids && touched.language_ids
-                      ? errors.language_ids
-                      : null}
-                  </p>
-                </div>
-                {formKeys?.role_type === "2" ? (
-                  <>
-                    <div className="form__group half__field">
-                      <label>Name of contact at institute *</label>
-                      <input
-                        type="text"
-                        name="institute_contact_name"
-                        placeholder="Enter name of contact"
-                        value={values.institute_contact_name}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      <p className="error-msg">
-                        {errors.institute_contact_name &&
-                        touched.institute_contact_name
-                          ? errors.institute_contact_name
-                          : null}
-                      </p>
-                    </div>
-                    <div className="form__group half__field">
-                      <label>Contact email at institute *</label>
-                      <input
-                        type="text"
-                        name="institute_contact_email"
-                        placeholder="Enter your email at institute"
-                        value={values.institute_contact_email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      <p className="error-msg">
-                        {errors.institute_contact_email &&
-                        touched.institute_contact_email
-                          ? errors.institute_contact_email
-                          : null}
-                      </p>
-                    </div>
-                    <div className="form__group full__field">
-                      <label>Contact phone at institute *</label>
-                      <input
-                        type="text"
-                        name="institute_contact_number"
-                        placeholder="Enter phone number"
-                        value={values.institute_contact_number}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      <p className="error-msg">
-                        {errors.institute_contact_number &&
-                        touched.institute_contact_number
-                          ? errors.institute_contact_number
-                          : null}
-                      </p>
-                    </div>
-                  </>
-                ) : (
-                  ""
-                )}
-                <div className="form__group full__field">
-                  <label>Have you lived outside of the US? *</label>
-                  <div className="d__flex">
-                    <div className="custom__radio-btn d__flex">
-                      <input
-                        type="radio"
-                        id="check_1"
-                        name="is_outside_united_states"
-                        defaultChecked
-                        value={
-                          values.is_outside_united_states
-                            ? ""
-                            : values.is_outside_united_states
-                        }
-                      />
-                      <label htmlFor="check_1">Yes </label>
-                    </div>
-                    <div className="custom__radio-btn  d__flex">
-                      <input
-                        type="radio"
-                        id="check_2"
-                        name="is_outside_united_states"
-                        value={values.is_outside_united_states}
-                      />
-                      <label htmlFor="check_2">No </label>
-                    </div>
-                  </div>
-                </div>
-                <div className="form__group full__field">
-                  <label>Do you like to travel? *</label>
-                  <div className="d__flex">
-                    <div className="custom__radio-btn d__flex">
-                      <input
-                        type="radio"
-                        id="check_3"
-                        name="is_like_travel"
-                        defaultChecked
-                      />
-                      <label htmlFor="check_3">Yes </label>
-                    </div>
-                    <div className="custom__radio-btn  d__flex">
-                      <input type="radio" id="check_4" name="is_like_travel" />
-                      <label htmlFor="check_4">No </label>
-                    </div>
-                  </div>
-                </div>
-                <div className="form__group full__field">
-                  <label>Were you ever in the military? *</label>
-                  <div className="d__flex">
-                    <div className="custom__radio-btn d__flex">
-                      <input
-                        type="radio"
-                        id="check_5"
-                        name="military"
-                        defaultChecked
-                      />
-                      <label htmlFor="check_5">Yes </label>
-                    </div>
-                    <div className="custom__radio-btn  d__flex">
-                      <input type="radio" id="check_6" name="military" />
-                      <label htmlFor="check_6">No </label>
-                    </div>
-                  </div>
-                </div>
-                <div className="form__group full__field mt-4 signup__btn">
-                  <button
-                    type="submit"
-                    className={`signup__next-btn full__field ${
-                      loading ? "disabled" : ""
-                    }`}
-                  >
-                    {loading ? "Processing..." : "Sign Up"}
-                  </button>
                 </div>
               </div>
-            </div>
-            <div className="signup__form-submit">
-              <div className="submit__btn-container d__flex d__flex-h-between">
-                <Link to="/" className="signup__cancel-btn">
-                  Cancel
-                </Link>
-                {user && user?.isInstitute ? (
-                  ""
-                ) : (
-                  <p>
-                    Already have an account?<Link to="/login">Log in</Link>
-                  </p>
-                )}
+              <div className="form__group full__field">
+                <label>What states have you lived in? *</label>
+                <Select
+                  closeMenuOnSelect={false}
+                  components={{
+                    animatedComponents,
+                    Placeholder,
+                    DropdownIndicator,
+                  }}
+                  placeholder={"Select your states"}
+                  isMulti
+                  options={states}
+                  className="basic-multi-select"
+                  hideSelectedOptions={false}
+                  onChange={(e) =>
+                    setFieldValue(
+                      "state_ids",
+                      e.map((selectedValue) => selectedValue.value)
+                    )
+                  }
+                />
+                <input
+                  type="text"
+                  name="state_ids"
+                  placeholder="Select Your Institute"
+                  value={values.state_ids}
+                  onChange={handleChange}
+                  className="hidden"
+                  onBlur={handleBlur}
+                />
+                <p className="error-msg">
+                  {errors.state_ids && touched.state_ids
+                    ? errors.state_ids
+                    : null}
+                </p>
+              </div>
+              <div className="form__group full__field">
+                <label>What was your career? *</label>
+                <input
+                  type="text"
+                  name="career"
+                  placeholder="Enter answer here"
+                  value={values.career}
+                  onChange={(e) => setFieldValue("career", e.target.value)}
+                  onBlur={handleBlur}
+                />
+                <p className="error-msg">
+                  {errors.career && touched.career ? errors.career : null}
+                </p>
+              </div>
+              <div className="form__group full__field">
+                <label>Favorite Subject in school? *</label>
+                <Select
+                  closeMenuOnSelect={false}
+                  components={{
+                    animatedComponents,
+                    Placeholder,
+                    DropdownIndicator,
+                  }}
+                  placeholder={"Select favorite subject"}
+                  isMulti
+                  options={subjects}
+                  className="basic-multi-select"
+                  hideSelectedOptions={false}
+                  onChange={(e) =>
+                    setFieldValue(
+                      "subject_ids",
+                      e.map((selectedValue) => selectedValue.value)
+                    )
+                  }
+                />
+                <input
+                  type="text"
+                  name="subject_ids"
+                  placeholder="Select Your Institute"
+                  value={values.subject_ids}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className="hidden"
+                />
+                <p className="error-msg">
+                  {errors.subject_ids && touched.subject_ids
+                    ? errors.subject_ids
+                    : null}
+                </p>
+              </div>
+              <div className="form__group full__field">
+                <label>Do you play a musical instrument? *</label>
+                <Select
+                  closeMenuOnSelect={false}
+                  components={{
+                    animatedComponents,
+                    Placeholder,
+                    DropdownIndicator,
+                  }}
+                  placeholder={"Select musical instrument"}
+                  isMulti
+                  options={instruments}
+                  className="basic-multi-select"
+                  hideSelectedOptions={false}
+                  onChange={(e) =>
+                    setFieldValue(
+                      "musical_instrument_ids",
+                      e.map((selectedValue) => selectedValue.value)
+                    )
+                  }
+                />
+                <input
+                  type="text"
+                  name="musical_instrument_ids"
+                  placeholder="Select Your Institute"
+                  value={values.musical_instrument_ids}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className="hidden"
+                />
+                <p className="error-msg">
+                  {errors.musical_instrument_ids &&
+                  touched.musical_instrument_ids
+                    ? errors.musical_instrument_ids
+                    : null}
+                </p>
+              </div>
+              <div className="form__group full__field">
+                <label>Do you like dogs, cats or fish? *</label>
+                <Select
+                  closeMenuOnSelect={false}
+                  components={{
+                    animatedComponents,
+                    Placeholder,
+                    DropdownIndicator,
+                  }}
+                  placeholder={"Select what you like"}
+                  isMulti
+                  options={pets}
+                  className="basic-multi-select"
+                  hideSelectedOptions={false}
+                  onChange={(e) =>
+                    setFieldValue(
+                      "pet_ids",
+                      e.map((selectedValue) => selectedValue.value)
+                    )
+                  }
+                />
+                <input
+                  type="text"
+                  name="pet_ids"
+                  placeholder="Select Your Institute"
+                  value={values.pet_ids}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className="hidden"
+                />
+                <p className="error-msg">
+                  {errors.pet_ids && touched.pet_ids ? errors.pet_ids : null}
+                </p>
+              </div>
+              <div className="form__group full__field">
+                <label>Do you like summer or winter better? *</label>
+                <Select
+                  closeMenuOnSelect={true}
+                  components={{
+                    animatedComponents,
+                    Placeholder,
+                    DropdownIndicator,
+                  }}
+                  placeholder={"Select Season"}
+                  options={[
+                    { value: "summer", label: "Summer" },
+                    { value: "winter", label: "Winter" },
+                  ]}
+                  className="basic-multi-select"
+                  hideSelectedOptions={false}
+                  onChange={(e) => setFieldValue("season", e.value)}
+                />
+                <p className="error-msg">
+                  {errors.season && touched.season ? errors.season : null}
+                </p>
+              </div>
+              <div className="form__group full__field">
+                <label>Do you speak any languages? *</label>
+                <Select
+                  closeMenuOnSelect={false}
+                  components={{
+                    animatedComponents,
+                    Placeholder,
+                    DropdownIndicator,
+                  }}
+                  placeholder={"Select Language"}
+                  isMulti
+                  options={languages}
+                  className="basic-multi-select"
+                  hideSelectedOptions={false}
+                  onChange={(e) =>
+                    setFieldValue(
+                      "language_ids",
+                      e.map((selectedValue) => selectedValue.value)
+                    )
+                  }
+                />
+                <input
+                  type="text"
+                  name="language_ids"
+                  placeholder="Select Your Institute"
+                  value={values.language_ids}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className="hidden"
+                />
+                <p className="error-msg">
+                  {errors.language_ids && touched.language_ids
+                    ? errors.language_ids
+                    : null}
+                </p>
+              </div>
+              {formKeys?.role_type === "2" ? (
+                <>
+                  <div className="form__group half__field">
+                    <label>Name of contact at institute *</label>
+                    <input
+                      type="text"
+                      name="institute_contact_name"
+                      placeholder="Enter name of contact"
+                      value={values.institute_contact_name}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    <p className="error-msg">
+                      {errors.institute_contact_name &&
+                      touched.institute_contact_name
+                        ? errors.institute_contact_name
+                        : null}
+                    </p>
+                  </div>
+                  <div className="form__group half__field">
+                    <label>Contact email at institute *</label>
+                    <input
+                      type="text"
+                      name="institute_contact_email"
+                      placeholder="Enter your email at institute"
+                      value={values.institute_contact_email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    <p className="error-msg">
+                      {errors.institute_contact_email &&
+                      touched.institute_contact_email
+                        ? errors.institute_contact_email
+                        : null}
+                    </p>
+                  </div>
+                  <div className="form__group full__field">
+                    <label>Contact phone at institute *</label>
+                    <input
+                      type="number"
+                      name="institute_contact_number"
+                      placeholder="Enter phone number"
+                      value={values.institute_contact_number}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    <p className="error-msg">
+                      {errors.institute_contact_number &&
+                      touched.institute_contact_number
+                        ? errors.institute_contact_number
+                        : null}
+                    </p>
+                  </div>
+                </>
+              ) : (
+                ""
+              )}
+              <div className="form__group full__field">
+                <label>Have you lived outside of the US? *</label>
+                <div className="d__flex">
+                  <div className="custom__radio-btn d__flex">
+                    <input
+                      type="radio"
+                      id="check_1"
+                      name="is_outside_united_states"
+                      defaultChecked
+                      value={
+                        values.is_outside_united_states
+                          ? ""
+                          : values.is_outside_united_states
+                      }
+                    />
+                    <label htmlFor="check_1">Yes </label>
+                  </div>
+                  <div className="custom__radio-btn  d__flex">
+                    <input
+                      type="radio"
+                      id="check_2"
+                      name="is_outside_united_states"
+                      value={values.is_outside_united_states}
+                    />
+                    <label htmlFor="check_2">No </label>
+                  </div>
+                </div>
+              </div>
+              <div className="form__group full__field">
+                <label>Do you like to travel? *</label>
+                <div className="d__flex">
+                  <div className="custom__radio-btn d__flex">
+                    <input
+                      type="radio"
+                      id="check_3"
+                      name="is_like_travel"
+                      defaultChecked
+                    />
+                    <label htmlFor="check_3">Yes </label>
+                  </div>
+                  <div className="custom__radio-btn  d__flex">
+                    <input type="radio" id="check_4" name="is_like_travel" />
+                    <label htmlFor="check_4">No </label>
+                  </div>
+                </div>
+              </div>
+              <div className="form__group full__field">
+                <label>Were you ever in the military? *</label>
+                <div className="d__flex">
+                  <div className="custom__radio-btn d__flex">
+                    <input
+                      type="radio"
+                      id="check_5"
+                      name="military"
+                      defaultChecked
+                    />
+                    <label htmlFor="check_5">Yes </label>
+                  </div>
+                  <div className="custom__radio-btn  d__flex">
+                    <input type="radio" id="check_6" name="military" />
+                    <label htmlFor="check_6">No </label>
+                  </div>
+                </div>
+              </div>
+              <div className="form__group full__field mt-4 signup__btn">
                 <button
-                  type="button"
-                  onClick={handlePrevious}
-                  className="signup__previous-btn"
+                  type="submit"
+                  className={`signup__next-btn full__field ${
+                    loading ? "disabled" : ""
+                  }`}
                 >
-                  Previous
+                  {loading ? "Processing..." : "Sign Up"}
                 </button>
               </div>
             </div>
-          </form>
-        )
-      }
+          </div>
+          <div className="signup__form-submit">
+            <div className="submit__btn-container d__flex d__flex-h-between">
+              <Link to="/" className="signup__cancel-btn">
+                Cancel
+              </Link>
+              {user && user?.isInstitute ? (
+                ""
+              ) : (
+                <p>
+                  Already have an account?<Link to="/login">Log in</Link>
+                </p>
+              )}
+              <button
+                type="button"
+                onClick={handlePrevious}
+                className="signup__previous-btn"
+              >
+                Previous
+              </button>
+            </div>
+          </div>
+        </form>
+      )}
       <Toaster />
     </>
   );
