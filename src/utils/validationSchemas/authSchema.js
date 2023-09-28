@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 // const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-const phoneRegExp = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+const phoneRegExp = /^\d+$/;
 
 export const signupSchema = Yup.object().shape({
   first_name: Yup.string()
@@ -33,7 +33,9 @@ export const signupSchema = Yup.object().shape({
   password_confirmation: Yup.string()
     .required("Please re-enter password.")
     .oneOf([Yup.ref("password"), null], "Password must match."),
-  institute_contact_number: Yup.string().required("Please enter your number."),
+  institute_contact_number: Yup.string()
+    .required("Please enter your number.")
+    .matches(phoneRegExp, "Phone number is not valid."),
 });
 export const emailSchema = Yup.object().shape({
   email: Yup.string()
@@ -55,7 +57,9 @@ export const elderSchema = Yup.object().shape({
     .oneOf([Yup.ref("email"), null], "Email must match."),
   dob: Yup.string().required("Select your birth year."),
   institute_id: Yup.string().required("Select your school."),
-  phone_no: Yup.string().required("Please enter your number."),
+  phone_no: Yup.string()
+    .required("Please enter your number.")
+    .matches(phoneRegExp, "Phone number is not valid."),
   password: Yup.string()
     .required()
     .min(8, "Minimum 8 characters are required.")
