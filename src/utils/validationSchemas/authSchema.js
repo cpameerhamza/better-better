@@ -1,6 +1,5 @@
 import * as Yup from "yup";
 // const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-const phoneRegExp = /^\d+$/;
 
 export const signupSchema = Yup.object().shape({
   first_name: Yup.string()
@@ -33,9 +32,7 @@ export const signupSchema = Yup.object().shape({
   password_confirmation: Yup.string()
     .required("Please re-enter password.")
     .oneOf([Yup.ref("password"), null], "Password must match."),
-  institute_contact_number: Yup.string()
-    .required("Please enter your number.")
-    .matches(phoneRegExp, "Phone number is not valid."),
+  institute_contact_number: Yup.string().required("Please enter your number."),
 });
 export const emailSchema = Yup.object().shape({
   email: Yup.string()
@@ -57,9 +54,7 @@ export const elderSchema = Yup.object().shape({
     .oneOf([Yup.ref("email"), null], "Email must match."),
   dob: Yup.string().required("Select your birth year."),
   institute_id: Yup.string().required("Select your school."),
-  phone_no: Yup.string()
-    .required("Please enter your number.")
-    .matches(phoneRegExp, "Phone number is not valid."),
+  phone_no: Yup.string().required("Please enter your number."),
   password: Yup.string()
     .required()
     .min(8, "Minimum 8 characters are required.")
@@ -117,9 +112,7 @@ export const contactSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address.")
     .required("Please enter your email."),
-  contact_number: Yup.string()
-    .matches(phoneRegExp, "Contact number is not valid")
-    .required("Please enter your number."),
+  contact_number: Yup.string().required("Please enter your number."),
   message: Yup.string()
     .min(10, "Minimum ten characters are required.")
     .required("Please enter your message."),
@@ -164,9 +157,7 @@ export const elderProfileSchema = Yup.object().shape({
   dob: Yup.string().required("Select your birth year."),
   address: Yup.string().required("Please enter your physical address."),
   about: Yup.string().required("Please write a little about yourself."),
-  phone_no: Yup.string()
-    .matches(phoneRegExp, "Phone number is not valid")
-    .required("Please enter your number."),
+  phone_no: Yup.string().required("Please enter your number."),
   institute_id: Yup.string().required("Select your school."),
   current_password: Yup.string()
     .required()

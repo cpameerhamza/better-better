@@ -1,17 +1,18 @@
 import { useFormik } from "formik";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import Select, { components } from "react-select";
+import makeAnimated from "react-select/animated";
+import avatar from "../../../assets/images/user__icon.jpg";
+import { getInstitutes } from "../../../redux/thunks/Thunks";
+import PreviewPhoto from "../../../utils/PreviewPhoto";
+import { addImageIcon, closeEye, openEye } from "../../../utils/SvgIcons";
+import { isNumberCheck } from "../../../utils/helper";
 import {
   elderSchema,
   signupSchema,
 } from "../../../utils/validationSchemas/authSchema";
-import { addImageIcon, closeEye, openEye } from "../../../utils/SvgIcons";
-import PreviewPhoto from "../../../utils/PreviewPhoto";
-import avatar from "../../../assets/images/user__icon.jpg";
-import Select, { components } from "react-select";
-import { useEffect, useRef, useState } from "react";
-import makeAnimated from "react-select/animated";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getInstitutes } from "../../../redux/thunks/Thunks";
 const animatedComponents = makeAnimated();
 
 const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
@@ -26,7 +27,6 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
     { length: currentYear - citizenYear + 1 },
     (_, index) => index + citizenYear
   ).reverse();
-
   const user = JSON.parse(localStorage.getItem("user"));
   const [isOpen, setIsOpen] = useState(false);
   const [institutes, setInstitutes] = useState(null);
@@ -57,9 +57,7 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
     },
   });
   const handleRole = (e) => {
-    console.log("FFF", citizenYearsArray);
     e.value === "2" ? setYears(citizenYearsArray) : setYears(studentYearsArray);
-    console.log("role:", e.value);
     e.value === "2" ? setIsElder(true) : setIsElder(false);
     dispatch(getInstitutes({ role_type: e.value })).then((response) => {
       // dispatch(getInstitutes({"role_type": e.target.value === 1 ? 1 : 2})).then((response) => {
@@ -107,6 +105,27 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
     handleReset();
     step(0);
   };
+
+  function myKeyPress(e, field) {
+    if (e.code !== "Backspace") {
+      if (!isNumberCheck(e)) {
+        setFieldValue(field, "");
+        return;
+      }
+    }
+  }
+
+  const inputHandler = (value, field) => {
+    // Remove all non-numeric characters from the input value
+    const text = value.replace(/[^0-9]/g, "");
+
+    if (text === "") {
+      setFieldValue(field, "");
+      return;
+    }
+    setFieldValue(field, value);
+  };
+
   return (
     <>
       <form
@@ -318,11 +337,16 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
               >
                 <label>Phone Number *</label>
                 <input
-                  type="number"
+                  type="text"
                   name="phone_no"
                   placeholder="Enter your number"
                   value={values.phone_no}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    inputHandler(e.target.value, "phone_no");
+                  }}
+                  onKeyDown={(e) => {
+                    myKeyPress(e, "phone_no");
+                  }}
                   onBlur={handleBlur}
                 />
                 <p className="error-msg">
@@ -360,11 +384,16 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
                 <div className="form__group half__field">
                   <label>School contact phone *</label>
                   <input
-                    type="number"
+                    type="text"
                     name="institute_contact_number"
                     placeholder="Enter school contact number"
                     value={values.institute_contact_number}
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      inputHandler(e.target.value, "institute_contact_number");
+                    }}
+                    onKeyDown={(e) => {
+                      myKeyPress(e, "institute_contact_number");
+                    }}
                     onBlur={handleBlur}
                   />
                   <p className="error-msg">

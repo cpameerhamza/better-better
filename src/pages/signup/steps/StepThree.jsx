@@ -18,6 +18,7 @@ import Toaster from "../../../utils/Toaster";
 import { Link } from "react-router-dom";
 import VerificationEmail from "../verification-email/VerificationEmail";
 import Success from "../../../institute/components/success/Success";
+import { isNumberCheck } from "../../../utils/helper";
 const animatedComponents = makeAnimated();
 
 const StepThree = ({
@@ -137,6 +138,27 @@ const StepThree = ({
     setCurrentState(e.label);
     setFieldValue("current_state", e.value);
   };
+
+  function myKeyPress(e, field) {
+    if (e.code !== "Backspace") {
+      if (!isNumberCheck(e)) {
+        setFieldValue(field, "");
+        return;
+      }
+    }
+  }
+
+  const inputHandler = (value, field) => {
+    // Remove all non-numeric characters from the input value
+    const text = value.replace(/[^0-9]/g, "");
+
+    if (text === "") {
+      setFieldValue(field, "");
+      return;
+    }
+    setFieldValue(field, value);
+  };
+
   return (
     <>
       {formSent && user?.isInstitute ? (
@@ -441,11 +463,19 @@ const StepThree = ({
                   <div className="form__group full__field">
                     <label>Contact phone at institute *</label>
                     <input
-                      type="number"
+                      type="text"
                       name="institute_contact_number"
                       placeholder="Enter phone number"
                       value={values.institute_contact_number}
-                      onChange={handleChange}
+                      onChange={(e) => {
+                        inputHandler(
+                          e.target.value,
+                          "institute_contact_number"
+                        );
+                      }}
+                      onKeyDown={(e) => {
+                        myKeyPress(e, "institute_contact_number");
+                      }}
                       onBlur={handleBlur}
                     />
                     <p className="error-msg">
