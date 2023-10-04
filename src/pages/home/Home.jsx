@@ -1,44 +1,46 @@
-import "./home.css";
-import Logo from "../../assets/images/logo.svg";
-import { Link, NavLink, Navigate } from "react-router-dom";
 import { useState } from "react";
-import { HashLink } from "react-router-hash-link";
 import {
   Accordion,
   AccordionItem,
-  AccordionItemHeading,
   AccordionItemButton,
+  AccordionItemHeading,
   AccordionItemPanel,
 } from "react-accessible-accordion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper";
+import { Link, NavLink } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
+import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
-import BannerImg from "../../assets/images/landing-banner.png";
-import MailIcon from "../../assets/images/everyone-email.svg";
+import { Swiper, SwiperSlide } from "swiper/react";
 import AboutImg from "../../assets/images/about-img.png";
+import ConnectImg from "../../assets/images/connect-img.png";
+import MailIcon from "../../assets/images/everyone-email.svg";
 import FeaturedImg1 from "../../assets/images/featured-1.png";
 import FeaturedImg2 from "../../assets/images/featured-2.png";
 import FeaturedImg3 from "../../assets/images/featured-3.png";
-import Work1 from "../../assets/images/work-1.png";
-import Work2 from "../../assets/images/work-2.png";
-import Work3 from "../../assets/images/work-3.png";
-import ConnectImg from "../../assets/images/connect-img.png";
+import HImg1 from "../../assets/images/h1.png";
+import HImg2 from "../../assets/images/h2.png";
+import BannerImg from "../../assets/images/landing-banner.png";
+import Logo from "../../assets/images/logo.svg";
 import S1 from "../../assets/images/s1.png";
 import S2 from "../../assets/images/s2.png";
 import S3 from "../../assets/images/s3.png";
 import S4 from "../../assets/images/s4.png";
-import HImg1 from "../../assets/images/h1.png";
-import HImg2 from "../../assets/images/h2.png";
+import Work1 from "../../assets/images/work-1.png";
+import Work2 from "../../assets/images/work-2.png";
+import Work3 from "../../assets/images/work-3.png";
 import {
   ctaBtnIcon,
-  twitterIcon,
   facebookIcon,
-  instagramIcon,
   githubIcon,
+  instagramIcon,
+  twitterIcon,
 } from "../../utils/SvgIcons";
+import "./home.css";
+import { useLocation } from "react-router";
 
 const Home = () => {
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState(0);
   const [nav, setNav] = useState(false);
   const user = JSON.parse(localStorage.getItem("user"));
@@ -48,6 +50,7 @@ const Home = () => {
   const showNav = (e) => {
     setNav(!nav);
   };
+  console.log("FF", location);
   return (
     <>
       <div className="landing__page">
@@ -63,16 +66,24 @@ const Home = () => {
                 }`}
               >
                 <ul className="landing__header-items d__flex d__flex-v-center gap-1">
-                  <li className="landing__header-item active">
-                    <HashLink to="#home">Home</HashLink>
+                  <li
+                    className={`landing__header-item ${
+                      location?.hash !== "#faq" ? "active" : ""
+                    }`}
+                  >
+                    <HashLink to="/#home">Home</HashLink>
                   </li>
                   <li className="landing__header-item">
-                    <HashLink to="#about">About Us</HashLink>
+                    <HashLink to="about">About Us</HashLink>
                   </li>
                   <li className="landing__header-item">
-                    <HashLink to="#contact">Contact</HashLink>
+                    <HashLink to="contact">Contact</HashLink>
                   </li>
-                  <li className="landing__header-item">
+                  <li
+                    className={`landing__header-item ${
+                      location?.hash === "#faq" ? "active" : ""
+                    }`}
+                  >
                     <HashLink to="#faq">FAQ</HashLink>
                   </li>
                 </ul>
@@ -829,10 +840,10 @@ const Home = () => {
                       <HashLink to="#home">Home</HashLink>
                     </li>
                     <li>
-                      <HashLink to="#about">About Us</HashLink>
+                      <HashLink to="about">About Us</HashLink>
                     </li>
                     <li>
-                      <HashLink to="#contact">Contact</HashLink>
+                      <HashLink to="contact">Contact</HashLink>
                     </li>
                     <li>
                       <HashLink to="#faq">FAQ</HashLink>
