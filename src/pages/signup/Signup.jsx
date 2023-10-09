@@ -30,6 +30,7 @@ const Signup = () => {
       isElder={isElder}
     />,
     <StepThree
+      isElder={isElder}
       formKeys={formKeys}
       setFormKeys={setFormKeys}
       step={setCurrentStep}
@@ -60,7 +61,7 @@ const Signup = () => {
                   ? "Sign Up"
                   : currentStep === 1
                   ? "Select Student’s interests.."
-                  : "Matching questions so students can find you and have something in common"}
+                  : "Matching questions to ensure you have something in common with your penpal"}
               </h2>
               <p>
                 {currentStep === 0 && user?.isInstitute && user?.role_type === 1
@@ -101,7 +102,7 @@ const Signup = () => {
           </div>
         </header>
       )}
-      {steps[currentStep]}
+      {steps[2]}
     </>
   );
 };

@@ -24,7 +24,7 @@ const animatedComponents = makeAnimated();
 const StepThree = ({
   formKeys,
   setFormKeys,
-  setIsElder,
+  isElder,
   step,
   setFormSuccess,
 }) => {
@@ -139,6 +139,10 @@ const StepThree = ({
     setFieldValue("current_state", e.value);
   };
 
+  const handleGrowState = (e) => {
+    setFieldValue("where_you_grow_up", e.value);
+  };
+
   function myKeyPress(e, field) {
     if (e.code !== "Backspace") {
       if (!isNumberCheck(e)) {
@@ -171,19 +175,27 @@ const StepThree = ({
             <div className="signup__form-one d__flex d__flex-h-between gap-2">
               <div className="form__group full__field">
                 <label>Where did you grow up? *</label>
-                <input
-                  type="text"
-                  name="where_you_grow_up"
-                  placeholder="Enter answer here"
-                  value={values.where_did_you_grow_up}
-                  onChange={(e) => handleChange(e)}
-                  onBlur={handleBlur}
-                />
-                <p className="error-msg">
-                  {errors.where_you_grow_up && touched.where_you_grow_up
-                    ? errors.where_you_grow_up
-                    : null}
-                </p>
+                <div className="form__box">
+                  <Select
+                    closeMenuOnSelect={true}
+                    placeholder={"Enter answer here"}
+                    components={{
+                      animatedComponents,
+                      Placeholder,
+                      DropdownIndicator,
+                    }}
+                    isMulti={false}
+                    options={states}
+                    className="basic-multi-select"
+                    hideSelectedOptions={false}
+                    onChange={(e) => handleGrowState(e)}
+                  />
+                  <p className="error-msg">
+                    {errors.where_you_grow_up && touched.where_you_grow_up
+                      ? errors.where_you_grow_up
+                      : null}
+                  </p>
+                </div>
               </div>
               <div className="form__group full__field">
                 <label>Your current location? *</label>
@@ -246,7 +258,12 @@ const StepThree = ({
                 </p>
               </div>
               <div className="form__group full__field">
-                <label>What was your career? *</label>
+                <label>
+                  {isElder
+                    ? "What was your career? "
+                    : "What do you want to be when you grow up? "}
+                  *
+                </label>
                 <input
                   type="text"
                   name="career"
@@ -536,7 +553,9 @@ const StepThree = ({
                 </div>
               </div>
               <div className="form__group full__field">
-                <label>Were you ever in the military? *</label>
+                <label>
+                  Would you like to have a penpal that was in the military? *
+                </label>
                 <div className="d__flex">
                   <div className="custom__radio-btn d__flex">
                     <input

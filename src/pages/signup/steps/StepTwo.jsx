@@ -21,7 +21,7 @@ const StepTwo = ({ formKeys, step }) => {
   const { values, handleSubmit } = useFormik({
     initialValues: formKeys,
     onSubmit: (values, e) => {
-      selectedInterests.length && step((step) => step + 1);
+      step((step) => step + 1);
     },
   });
 
@@ -51,9 +51,9 @@ const StepTwo = ({ formKeys, step }) => {
   }, [checkedInterests]);
 
   const handleNext = () => {
-    selectedInterests.length === 0
-      ? setInterestError("Please select at least one interest.")
-      : setInterestError("");
+    // selectedInterests.length === 0
+    //   ? setInterestError("Please select at least one interest.")
+    //   : setInterestError("");
   };
   const handlePrevious = () => {
     step((step) => step - 1);

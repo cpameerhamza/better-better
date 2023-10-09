@@ -28,11 +28,8 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
     (_, index) => index + citizenYear
   ).reverse();
   const user = JSON.parse(localStorage.getItem("user"));
-  const [isOpen, setIsOpen] = useState(false);
-  const [institutes, setInstitutes] = useState(null);
   const [years, setYears] = useState(studentYearsArray);
   const dispatch = useDispatch();
-  const [instituteName, setInstituteName] = useState("");
   const [isRevealPwd, setIsRevealPwd] = useState(false);
   const [isRevealPwdConfirm, setIsRevealPwdConfirm] = useState(false);
 
@@ -59,14 +56,6 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
   const handleRole = (e) => {
     e.value === "2" ? setYears(citizenYearsArray) : setYears(studentYearsArray);
     e.value === "2" ? setIsElder(true) : setIsElder(false);
-    dispatch(getInstitutes({ role_type: e.value })).then((response) => {
-      // dispatch(getInstitutes({"role_type": e.target.value === 1 ? 1 : 2})).then((response) => {
-      const newArr = Object.keys(response?.payload?.data).map((key) => {
-        return response?.payload?.data[key];
-      });
-      // console.log("actuall", newArr);
-      setInstitutes([newArr]);
-    });
   };
   const Placeholder = (props) => {
     return <components.Placeholder {...props} />;
@@ -74,42 +63,11 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
   useEffect(() => {
     setIsElder(user?.isInstitute && user?.role_type === 2 ? true : false);
   }, []);
-  const handleInstitute = (e) => {
-    // console.log(e)
-    setInstituteName(e.label);
-    setFieldValue("institute_id", e.value);
-  };
-  useEffect(() => {
-    dispatch(getInstitutes({ role_type: 1 })).then((response) => {
-      const newArr = Object.keys(response?.payload?.data).map((key) => {
-        return response?.payload?.data[key];
-      });
-      // console.log("actuall", newArr);
-      setInstitutes([newArr]);
-    });
-  }, []);
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [ref]);
-  const handleCancel = () => {
-    handleReset();
-    step(0);
-  };
 
   function myKeyPress(e, field) {
     if (e.code !== "Backspace") {
       if (!isNumberCheck(e)) {
-        setFieldValue(field, "");
+        e.preventDefault();
         return;
       }
     }
@@ -117,12 +75,13 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
 
   const inputHandler = (value, field) => {
     // Remove all non-numeric characters from the input value
-    const text = value.replace(/[^0-9]/g, "");
+    const text = value.replace(/[^\d\S]/g, "");
 
     if (text === "") {
       setFieldValue(field, "");
       return;
     }
+
     setFieldValue(field, value);
   };
 
@@ -298,36 +257,21 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
             </div>
             <div className="form__group half__field">
               <label>
-                {!isElder ? "Your School Name *" : "Select Your Institute"}
+                {!isElder ? "Your School Name *" : "Enter Your Institute Name"}
               </label>
-              <div className="form__box" ref={ref}>
-                <input
-                  type="text"
-                  name="institute_id"
-                  placeholder="Select Your Institute"
-                  value={values.institute_id}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className="hidden"
-                />
-
-                <Select
-                  closeMenuOnSelect={true}
-                  components={{ animatedComponents, Placeholder }}
-                  options={institutes ? institutes[0] : "No records found."}
-                  className="basic-multi-select"
-                  hideSelectedOptions={false}
-                  onChange={(e) => {
-                    handleInstitute(e);
-                  }}
-                />
-
-                <p className="error-msg">
-                  {errors.institute_id && touched.institute_id
-                    ? errors.institute_id
-                    : null}
-                </p>
-              </div>
+              <input
+                type="text"
+                name="institute_id"
+                placeholder="Enter Your Institute Name"
+                value={values.institute_id}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              <p className="error-msg">
+                {errors.institute_id && touched.institute_id
+                  ? errors.institute_id
+                  : null}
+              </p>
             </div>
             {isElder ? (
               <div

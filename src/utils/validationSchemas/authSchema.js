@@ -24,7 +24,7 @@ export const signupSchema = Yup.object().shape({
     .required("Please re-enter email.")
     .oneOf([Yup.ref("email"), null], "Email must match."),
   dob: Yup.string().required("Select your birth year."),
-  institute_id: Yup.string().required("Select your school."),
+  institute_id: Yup.string().required("Enter your school name."),
   password: Yup.string()
     .required()
     .min(8, "Minimum 8 characters are required.")
@@ -53,7 +53,7 @@ export const elderSchema = Yup.object().shape({
     .required("Please re-enter email.")
     .oneOf([Yup.ref("email"), null], "Email must match."),
   dob: Yup.string().required("Select your birth year."),
-  institute_id: Yup.string().required("Select your school."),
+  institute_id: Yup.string().required("Enter your Institute name."),
   phone_no: Yup.string().required("Please enter your number."),
   password: Yup.string()
     .required()
@@ -136,7 +136,7 @@ export const studentProfileSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address.")
     .required("Please enter your email."),
-  institute_id: Yup.string().required("Select your school."),
+  institute_id: Yup.string().required("Enter your school name."),
   current_password: Yup.string(),
   password: Yup.string().min(8, "Minimum 8 characters are required."),
   password_confirmation: Yup.string().oneOf(
