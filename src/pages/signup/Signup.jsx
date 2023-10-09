@@ -102,7 +102,7 @@ const Signup = () => {
           </div>
         </header>
       )}
-      {steps[2]}
+      {steps[currentStep]}
     </>
   );
 };
