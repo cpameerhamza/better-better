@@ -146,7 +146,7 @@ const StepThree = ({
   function myKeyPress(e, field) {
     if (e.code !== "Backspace") {
       if (!isNumberCheck(e)) {
-        setFieldValue(field, "");
+        e.preventDefault();
         return;
       }
     }
@@ -154,7 +154,7 @@ const StepThree = ({
 
   const inputHandler = (value, field) => {
     // Remove all non-numeric characters from the input value
-    const text = value.replace(/[^0-9]/g, "");
+    const text = value.replace(/[^\d\S]/g, "");
 
     if (text === "") {
       setFieldValue(field, "");
