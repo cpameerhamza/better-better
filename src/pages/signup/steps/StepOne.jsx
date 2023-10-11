@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Select, { components } from "react-select";
+import CreatableSelect from "react-select/creatable";
 import makeAnimated from "react-select/animated";
 import avatar from "../../../assets/images/user__icon.jpg";
 import { getInstitutes } from "../../../redux/thunks/Thunks";
@@ -32,6 +33,7 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
   const dispatch = useDispatch();
   const [isRevealPwd, setIsRevealPwd] = useState(false);
   const [isRevealPwdConfirm, setIsRevealPwdConfirm] = useState(false);
+  const [institutes, setInstitutes] = useState([]);
 
   const ref = useRef();
   const {
@@ -84,6 +86,15 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
 
     setFieldValue(field, value);
   };
+
+  useEffect(() => {
+    dispatch(getInstitutes({ role_type: 1 })).then((response) => {
+      const newArr = Object.keys(response?.payload.data).map((key) => {
+        return response?.payload.data[key];
+      });
+      setInstitutes(newArr);
+    });
+  }, []);
 
   return (
     <>
@@ -259,17 +270,21 @@ const StepOne = ({ formKeys, setFormKeys, step, isElder, setIsElder }) => {
               <label>
                 {!isElder ? "Your School Name *" : "Enter Your Institute Name"}
               </label>
-              <input
-                type="text"
-                name="institute_id"
+              <CreatableSelect
+                components={{ animatedComponents, Placeholder }}
                 placeholder="Enter Your Institute Name"
-                value={values.institute_id}
-                onChange={handleChange}
+                options={institutes}
+                className="basic-multi-select"
+                onChange={(e) => {
+                  setFieldValue("institute", e.label);
+                }}
+                noOptionsMessage=""
                 onBlur={handleBlur}
+                backspaceRemovesValue
               />
               <p className="error-msg">
-                {errors.institute_id && touched.institute_id
-                  ? errors.institute_id
+                {errors.institute && touched.institute
+                  ? errors.institute
                   : null}
               </p>
             </div>

@@ -16,7 +16,7 @@ export const SignupFormFields = () => {
     last_name: "",
     phone_no: "",
     dob: "",
-    institute_id: "",
+    institute: "",
     password: "",
     password_confirmation: "",
     gender: "",

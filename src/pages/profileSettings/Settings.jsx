@@ -7,12 +7,14 @@ import Select, { components } from "react-select";
 import makeAnimated from "react-select/animated";
 import { useFormik } from "formik";
 import { studentProfileSchema } from "../../utils/validationSchemas/authSchema";
+import CreatableSelect from "react-select/creatable";
 import { useDispatch, useSelector } from "react-redux";
 import { getInstitutes, updateProfile } from "../../redux/thunks/Thunks";
 import PreviewPhoto from "../../utils/PreviewPhoto";
 import { toast } from "react-toastify";
 import Toaster from "../../utils/Toaster";
 import { useNavigate } from "react-router";
+const animatedComponents = makeAnimated();
 
 const Settings = () => {
   const [pwd, setPwd] = useState("");
@@ -22,13 +24,12 @@ const Settings = () => {
   const [instituteName, setInstituteName] = useState("");
   const [loading, setLoading] = useState(false);
   const ref = useRef();
-  const animatedComponents = makeAnimated();
 
   const institute = useSelector((state) => state.institutes);
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const [isChanged, setIsChanged] = useState(false);
-  const [interestValue, setInterestValue] = useState();
+  const [defaultInstituteValue, setDefaultValue] = useState();
 
   const user = JSON.parse(localStorage.getItem("user"));
   const token = JSON.parse(localStorage.getItem("token"));
@@ -44,7 +45,7 @@ const Settings = () => {
     about: user && user?.about !== null ? user?.about : "",
     avatar: "",
     address: user && user?.address !== null ? user?.address : "",
-    institute_id: user && user?.institute_id !== null ? user?.institute_id : "",
+    institute: user && user?.institute !== null ? user?.institute : "",
     current_password: "",
     password: "",
     password_confirmation: "",
@@ -99,11 +100,6 @@ const Settings = () => {
     },
   });
 
-  const handleInstitute = (e) => {
-    setInstituteName(e.label);
-    setFieldValue("institute_id", e.value);
-    setInterestValue(e.label);
-  };
   const Placeholder = (props) => {
     return <components.Placeholder {...props} />;
   };
@@ -125,9 +121,7 @@ const Settings = () => {
       const newArr = Object.keys(response?.payload.data).map((key) => {
         return response?.payload.data[key];
       });
-      console.log("actuall", newArr);
-      setInstitutes([newArr]);
-      console.log("all interests:", institutes);
+      setInstitutes(newArr);
     });
   }, []);
   const handleEmail = (e) => {
@@ -136,12 +130,14 @@ const Settings = () => {
     }
   };
   useEffect(() => {
-    const interesetName =
-      institutes &&
-      institutes[0]
-        .filter((filtered) => filtered.value === values?.institute_id)
-        .map((obj) => obj.label);
-    setInterestValue(interesetName);
+    if (institutes) {
+      console.log(" user?.institute_id", user?.institute_id);
+      let filterArr = institutes?.filter(
+        (itm) => itm?.value == user?.institute_id
+      );
+      console.log(" user?.institute_id", filterArr[0]);
+      setDefaultValue(filterArr[0]);
+    }
   }, [institutes]);
 
   return (
@@ -299,17 +295,22 @@ const Settings = () => {
                     </div>
                     <div className="form__group half__field">
                       <label>Enter Your Institute</label>
-                      <input
-                        type="text"
-                        name="institute_id"
+                      <CreatableSelect
+                        defaultValue={defaultInstituteValue}
+                        components={{ animatedComponents, Placeholder }}
                         placeholder="Enter Your Institute Name"
-                        value={values.institute_id}
-                        onChange={handleChange}
+                        options={institutes}
+                        className="basic-multi-select"
+                        onChange={(e) => {
+                          setFieldValue("institute", e.label);
+                        }}
+                        noOptionsMessage=""
                         onBlur={handleBlur}
+                        backspaceRemovesValue
                       />
                       <p className="error-msg">
-                        {errors.institute_id && touched.institute_id
-                          ? errors.institute_id
+                        {errors.institute && touched.institute
+                          ? errors.institute
                           : null}
                       </p>
                     </div>
