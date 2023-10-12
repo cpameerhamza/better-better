@@ -39,7 +39,7 @@ export const registerUser = createAsyncThunk(
     formData.append("email", payload?.email);
     formData.append("phone_no", payload.institute_contact_number);
     formData.append("dob", "01-01-" + payload?.dob);
-    formData.append("institute_id", payload.institute_id);
+    formData.append("institute", payload.institute);
     formData.append("password", payload.password);
     formData.append("password_confirmation", payload.password_confirmation);
     formData.append("about", payload.about);

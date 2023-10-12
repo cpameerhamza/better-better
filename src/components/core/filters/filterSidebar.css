@@ -9,18 +9,16 @@
   transition-delay: 0.1s;
   background-color: #fff;
   z-index: 999999;
-  
 }
-.match-filters::after {
-  position: absolute;
-  bottom: 95px;
-  left: 0;
-  right: 0;
-  width: 100%;
-  content: "";
-  height: 1px;
-  background-color: #EAEDF6;
+
+.match-filters::-webkit-scrollbar {
+  display: none;
 }
+
+.filtes-body::-webkit-scrollbar {
+  display: none;
+}
+
 main#main:has(.match-filters.show-filter)::after {
   position: fixed;
   inset: 0;
@@ -30,16 +28,17 @@ main#main:has(.match-filters.show-filter)::after {
   z-index: 1;
   transition: 0.3s ease-in-out;
   background-color: rgba(0, 0, 0, 0.25);
-}   
-.match-filters.show-filter {
-    right: 0%;
 }
-.filtes-body{
+.match-filters.show-filter {
+  right: 0%;
+}
+.filtes-body {
   height: calc(100% - 36px);
   padding-top: 40px;
 }
-.filtes-body form,.filtes-body fieldset {
-    height: 100%;
+.filtes-body form,
+.filtes-body fieldset {
+  height: 100%;
 }
 .closefilters {
   background-color: transparent;
@@ -52,12 +51,11 @@ main#main:has(.match-filters.show-filter)::after {
   border: none;
   display: flex;
   flex-direction: column;
-   justify-content: space-between;
+  justify-content: space-between;
 }
 
-.field-row{
-    margin-bottom: 20px;
-
+.field-row {
+  margin-bottom: 20px;
 }
 .filtes-body {
   padding-top: 40px;
@@ -70,12 +68,12 @@ main#main:has(.match-filters.show-filter)::after {
   margin-bottom: 10px;
   font-weight: 400;
 }
-.filter-header  h3 {
+.filter-header h3 {
   font-size: 22px;
   font-weight: 500;
-  color: #1B1F25;
+  color: #1b1f25;
 }
- .css-1n6sfyn-MenuList .css-tr4s17-option {
+.css-1n6sfyn-MenuList .css-tr4s17-option {
   background-color: #fff5f1;
   color: #495057;
 }
@@ -88,61 +86,60 @@ main#main:has(.match-filters.show-filter)::after {
 span.css-1u9des2-indicatorSeparator {
   display: none;
 }
-.field-row .field-col input[type="checkbox"]
-{
-    margin-right: 8px;
-    border: 1px solid #103163;
-    width: 16px;
-    height: 16px;
-    border-radius: 4px;
-    accent-color: #6C5878;
+.field-row .field-col input[type="checkbox"] {
+  margin-right: 8px;
+  border: 1px solid #103163;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  accent-color: #6c5878;
 }
 
 .submit-filter button {
-    display: block;
-    text-align: center;
-    width: 100%;
-    min-height: 40px;
-    border: 1px solid #6C5878;
-    background-color: #6C5878;
-    color: #fff;
-    font-weight: 500;
-    border-radius: 4px;
+  margin-top: 20px;
+  display: block;
+  text-align: center;
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid #6c5878;
+  background-color: #6c5878;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px;
 }
 
 .submit-filter button svg {
-    vertical-align: middle;
-    margin-left: 8px;
+  vertical-align: middle;
+  margin-left: 8px;
 }
-.checkbox-label
-{
-    margin-bottom: 10px;
-    color: #868E96;
+.checkbox-label {
+  margin-bottom: 10px;
+  color: #868e96;
 }
-.match-filters  .css-qbdosj-Input {
-    margin: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+.match-filters .css-qbdosj-Input {
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-.match-filters  .css-1fdsijx-ValueContainer {
-    padding-top: 0;
-    padding-bottom: 0;
+.match-filters .css-1fdsijx-ValueContainer {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .form-fields .css-13cymwt-control {
   border: 1px solid rgba(207, 219, 213, 0.7);
   border-radius: 6px;
 }
 @media only screen and (max-width: 767px) {
-  .match-filters{
+  .match-filters {
     padding: 20px 10px;
   }
-  .match-filters::after{
+  .match-filters::after {
     content: none;
   }
-} 
+}
 @media only screen and (max-width: 340px) {
-  .match-filters{
+  .match-filters {
     width: 100%;
     max-width: 100%;
     padding: 20px 10px;

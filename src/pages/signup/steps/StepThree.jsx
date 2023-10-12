@@ -58,43 +58,43 @@ const StepThree = ({
       console.log("final values", values);
       setLoading(true);
       setFormKeys({ ...formKeys, ...values });
-      console.log("final form keys", values);
+      console.log("final values", values);
       // dispatch(registerUser({values: values, user: user}));
-      // dispatch(registerUser(values, user)).then((response) => {
-      //   setLoading(false);
-      //   // if(response?.payload.message === "Please enter a valid institute"){
-      //   //     toast.error("Something went wrong, Please try again.");
-      //   // }
-      //   // if(response?.payload.message === "The email has already been taken."){
-      //   //     toast.error("Email is already taken.");
-      //   //     setTimeout(() => {
-      //   //         step(0);
-      //   //     }, 2000);
-      //   // }
-      //   // if(response?.payload.message === "The teacher phone is not a valid phone number."){
-      //   //     toast.error("Invalid phone number format.");
-      //   //     setTimeout(() => {
-      //   //         step(0);
-      //   //     }, 2000);
-      //   // }
-      //   // if(response?.payload.status === false && response?.payload.message !== "The teacher phone is not a valid phone number."){
-      //   //     toast.error("Something went wrong, Please try again.");
-      //   //     setTimeout(() => {
-      //   //         step(0);
-      //   //     }, 2000);
-      //   // }
+      dispatch(registerUser(values, user)).then((response) => {
+        setLoading(false);
+        // if(response?.payload.message === "Please enter a valid institute"){
+        //     toast.error("Something went wrong, Please try again.");
+        // }
+        // if(response?.payload.message === "The email has already been taken."){
+        //     toast.error("Email is already taken.");
+        //     setTimeout(() => {
+        //         step(0);
+        //     }, 2000);
+        // }
+        // if(response?.payload.message === "The teacher phone is not a valid phone number."){
+        //     toast.error("Invalid phone number format.");
+        //     setTimeout(() => {
+        //         step(0);
+        //     }, 2000);
+        // }
+        // if(response?.payload.status === false && response?.payload.message !== "The teacher phone is not a valid phone number."){
+        //     toast.error("Something went wrong, Please try again.");
+        //     setTimeout(() => {
+        //         step(0);
+        //     }, 2000);
+        // }
 
-      //   if (response?.payload.status === false) {
-      //     toast.error(response?.payload.message);
-      //     setTimeout(() => {
-      //       step(0);
-      //     }, 3000);
-      //   } else {
-      //     setFormSent(true);
-      //     setFormSuccess(true);
-      //     toast.success(response?.payload.message);
-      //   }
-      // });
+        if (response?.payload.status === false) {
+          toast.error(response?.payload.message);
+          setTimeout(() => {
+            step(0);
+          }, 3000);
+        } else {
+          setFormSent(true);
+          setFormSuccess(true);
+          toast.success(response?.payload.message);
+        }
+      });
     },
   });
   useEffect(() => {
