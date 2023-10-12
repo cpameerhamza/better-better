@@ -51,16 +51,14 @@ const Signup = () => {
           <div className="header__content">
             <div className="signup__title">
               <h2>
-                {currentStep === 0 && user?.isInstitute && user?.role_type === 1
-                  ? "Register Your Student"
-                  : currentStep === 0 &&
-                    user?.isInstitute &&
-                    user?.role_type === 2
-                  ? "Register Your Elderly Person"
-                  : currentStep === 0
+                {currentStep === 0
                   ? "Sign Up"
                   : currentStep === 1
-                  ? "Select Student’s interests.."
+                  ? isElder
+                    ? "Select Student’s interests.."
+                    : "Select interests.."
+                  : currentStep === 2 && isElder
+                  ? "Matching questions so students can find you and have something in common"
                   : "Matching questions to ensure you have something in common with your penpal"}
               </h2>
               <p>

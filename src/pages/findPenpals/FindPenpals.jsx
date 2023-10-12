@@ -22,6 +22,10 @@ const FindPenpals = () => {
   const [appliedInstrument, setAppliedInstrument] = useState([]);
   const [appliedInterests, setAppliedInterests] = useState([]);
   const [appliedPets, setAppliedPets] = useState([]);
+  const [appliedSubjects, setAppliedSubjects] = useState([]);
+  const [appliedSeason, setAppliedSeason] = useState(null);
+  const [travel, setTravel] = useState(false);
+  const [military, setMilitary] = useState(false);
   const [isFiltersApplied, setFiltersApplied] = useState(false);
   useEffect(() => {
     if (user) {
@@ -35,25 +39,27 @@ const FindPenpals = () => {
   }, []);
   useEffect(() => {
     if (isFiltersApplied === true) {
-      console.log("appliedInstitute", appliedInstitute);
-      console.log("appliedState", appliedState);
-      console.log("appliedlanguages", appliedlanguages);
-      console.log("appliedInstrument", appliedInstrument);
-      console.log("appliedInterests", appliedInterests);
-      console.log("appliedPets", appliedPets);
       setFiltersApplied(false);
-      //   dispatch(
-      //     findPenpals({
-      //       token: token,
-      //       institute_id: appliedInstitute,
-      //       interest: appliedInterests.join(" "),
-      //     })
-      //   ).then((response) => {
-      //     setLoading(false);
-      //     setMatchedPenpals(response?.payload.data);
-      //     response?.payload.data.length ? setEmpty(true) : setEmpty(false);
-      //     setFiltersApplied(false);
-      //   });
+      dispatch(
+        findPenpals({
+          token: token,
+          institute: appliedInstitute,
+          states: appliedState,
+          langauges: appliedlanguages,
+          instruments: appliedInstrument,
+          interests: appliedInterests,
+          pets: appliedPets,
+          subjects: appliedSubjects,
+          season: appliedSeason,
+          like_to_travel: travel,
+          military: military,
+        })
+      ).then((response) => {
+        setLoading(false);
+        setMatchedPenpals(response?.payload.data);
+        response?.payload.data.length ? setEmpty(true) : setEmpty(false);
+        setFiltersApplied(false);
+      });
     }
   }, [isFiltersApplied]);
   const showFilter = () => {
@@ -117,6 +123,10 @@ const FindPenpals = () => {
         setAppliedLanguages={setAppliedLanguages}
         setAppliedInstrument={setAppliedInstrument}
         setAppliedPets={setAppliedPets}
+        setAppliedSubjects={setAppliedSubjects}
+        setAppliedSeason={setAppliedSeason}
+        setTravel={setTravel}
+        setMilitary={setMilitary}
       />
     </>
   );

@@ -130,6 +130,20 @@ span.css-1u9des2-indicatorSeparator {
   border: 1px solid rgba(207, 219, 213, 0.7);
   border-radius: 6px;
 }
+
+.filter-submit-button-float {
+  padding-top: 20px;
+  position: absolute;
+  background-color: white;
+  width: 90%;
+  bottom: 10px;
+}
+
+.emptyDiv {
+  min-height: 82px;
+  width: 100%;
+}
+
 @media only screen and (max-width: 767px) {
   .match-filters {
     padding: 20px 10px;

@@ -260,9 +260,18 @@ export const getTotalPenpals = createAsyncThunk(
 export const findPenpals = createAsyncThunk("/find-penpal", async (payload) => {
   const formData = new FormData();
   formData.append("token", payload.token);
-  payload?.interest && formData.append("interests", payload?.interest);
-  payload?.institute_id &&
-    formData.append("institute_id", payload?.institute_id);
+  if (payload?.states) {
+    formData.append("institute", payload?.institute);
+    formData.append("states", payload?.states);
+    formData.append("langauges", payload?.langauges);
+    formData.append("instruments", payload?.instruments);
+    formData.append("interests", payload?.interests);
+    formData.append("pets", payload?.pets);
+    formData.append("subjects", payload?.subjects);
+    formData.append("season", payload?.season);
+    formData.append("like_to_travel", payload?.like_to_travel);
+    formData.append("military", payload?.military);
+  }
   const res = await api.post("/find-penpals", formData, {
     headers: {
       Authorization: `Bearer ${payload.token}`,

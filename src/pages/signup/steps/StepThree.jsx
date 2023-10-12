@@ -30,6 +30,7 @@ const StepThree = ({
 }) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const dispatch = useDispatch();
+  const [isMulti, setMulti] = useState(true);
   const [subjects, setSubjects] = useState([]);
   const [states, setStates] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -39,6 +40,7 @@ const StepThree = ({
   const [currentState, setCurrentState] = useState("");
   const [loading, setLoading] = useState(false);
   const [formSent, setFormSent] = useState(false);
+  const [interest, setInterest] = useState([]);
   useEffect(() => {
     console.log("form values are here:", values);
   }, []);
@@ -162,6 +164,35 @@ const StepThree = ({
       return;
     }
     setFieldValue(field, value);
+  };
+
+  const handleInstruments = (e) => {
+    if (isMulti) {
+      let x = e.filter((item) => item.label === "None");
+      if (x?.length > 0) {
+        setMulti(false);
+        setFieldValue("musical_instrument_ids", [x[0]?.value]);
+        setInterest(x);
+      } else {
+        setMulti(true);
+        setInterest(e);
+        setFieldValue(
+          "musical_instrument_ids",
+          e.map((item) => item.value)
+        );
+      }
+    } else {
+      if (e.label === "None") {
+        setMulti(false);
+        setFieldValue("musical_instrument_ids", [e?.value]);
+
+        setInterest(e);
+      } else {
+        setInterest(e);
+        setMulti(true);
+        setFieldValue("musical_instrument_ids", [e?.value]);
+      }
+    }
   };
 
   return (
@@ -298,15 +329,6 @@ const StepThree = ({
                     )
                   }
                 />
-                <input
-                  type="text"
-                  name="subject_ids"
-                  placeholder="Select Your Institute"
-                  value={values.subject_ids}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className="hidden"
-                />
                 <p className="error-msg">
                   {errors.subject_ids && touched.subject_ids
                     ? errors.subject_ids
@@ -316,6 +338,7 @@ const StepThree = ({
               <div className="form__group full__field">
                 <label>Do you play a musical instrument? *</label>
                 <Select
+                  value={interest}
                   closeMenuOnSelect={false}
                   components={{
                     animatedComponents,
@@ -323,16 +346,11 @@ const StepThree = ({
                     DropdownIndicator,
                   }}
                   placeholder={"Select musical instrument"}
-                  isMulti
+                  isMulti={isMulti}
                   options={instruments}
                   className="basic-multi-select"
                   hideSelectedOptions={false}
-                  onChange={(e) =>
-                    setFieldValue(
-                      "musical_instrument_ids",
-                      e.map((selectedValue) => selectedValue.value)
-                    )
-                  }
+                  onChange={(e) => handleInstruments(e)}
                 />
                 <input
                   type="text"
@@ -555,7 +573,9 @@ const StepThree = ({
               </div>
               <div className="form__group full__field">
                 <label>
-                  Would you like to have a penpal that was in the military? *
+                  {isElder
+                    ? "Were you ever in the military? *"
+                    : "Would you like to have a penpal that was in the military? *"}
                 </label>
                 <div className="d__flex">
                   <div className="custom__radio-btn d__flex">
