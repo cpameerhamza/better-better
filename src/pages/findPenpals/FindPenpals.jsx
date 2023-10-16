@@ -39,6 +39,8 @@ const FindPenpals = () => {
   }, []);
   useEffect(() => {
     if (isFiltersApplied === true) {
+      setFilter(false);
+      setLoading(true);
       setFiltersApplied(false);
       dispatch(
         findPenpals({

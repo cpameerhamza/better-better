@@ -21,11 +21,9 @@ const Settings = () => {
   const [isRevealPwd, setIsRevealPwd] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [institutes, setInstitutes] = useState(null);
-  const [instituteName, setInstituteName] = useState("");
   const [loading, setLoading] = useState(false);
   const ref = useRef();
 
-  const institute = useSelector((state) => state.institutes);
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const [isChanged, setIsChanged] = useState(false);
@@ -131,11 +129,11 @@ const Settings = () => {
   };
   useEffect(() => {
     if (institutes) {
-      console.log(" user?.institute_id", user?.institute_id);
+      // console.log(" user?.institute_id", user?.institute_id);
       let filterArr = institutes?.filter(
         (itm) => itm?.value == user?.institute_id
       );
-      console.log(" user?.institute_id", filterArr[0]);
+      // console.log(" user?.institute_id", filterArr[0]);
       setDefaultValue(filterArr[0]);
     }
   }, [institutes]);
@@ -296,12 +294,13 @@ const Settings = () => {
                     <div className="form__group half__field">
                       <label>Enter Your Institute</label>
                       <CreatableSelect
-                        defaultValue={defaultInstituteValue}
+                        value={defaultInstituteValue}
                         components={{ animatedComponents, Placeholder }}
                         placeholder="Enter Your Institute Name"
                         options={institutes}
                         className="basic-multi-select"
                         onChange={(e) => {
+                          setDefaultValue(e);
                           setFieldValue("institute", e.label);
                         }}
                         noOptionsMessage=""

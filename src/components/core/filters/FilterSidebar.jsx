@@ -152,7 +152,7 @@ export const FilterSidebar = ({
                       }}
                       placeholder={"Select Institute"}
                       options={institutes}
-                      className="select-institue"
+                      className="basic-multi-select"
                       hideSelectedOptions={false}
                       onChange={(e) => {
                         setAppliedInstitute(e.value);
@@ -174,7 +174,7 @@ export const FilterSidebar = ({
                       }}
                       placeholder={"Select State"}
                       options={states}
-                      className="select-institue"
+                      className="basic-multi-select"
                       hideSelectedOptions={false}
                       onChange={(e) => {
                         setAppliedState(e.map((item) => item.value));
@@ -196,7 +196,7 @@ export const FilterSidebar = ({
                       }}
                       placeholder={"Select Language"}
                       options={languages}
-                      className="select-institue"
+                      className="basic-multi-select"
                       hideSelectedOptions={false}
                       onChange={(e) => {
                         setAppliedLanguages(e.map((item) => item.value));
@@ -219,7 +219,7 @@ export const FilterSidebar = ({
                       }}
                       placeholder={"Select Instrument"}
                       options={instruments}
-                      className="select-institue"
+                      className="basic-multi-select"
                       hideSelectedOptions={false}
                       onChange={(e) => {
                         handleInstruments(e);
@@ -241,7 +241,7 @@ export const FilterSidebar = ({
                       }}
                       placeholder={"Select Interest"}
                       options={interests}
-                      className="select-institue"
+                      className="basic-multi-select"
                       hideSelectedOptions={false}
                       onChange={(e) => {
                         setAppliedInterests(e.map((item) => item.value));
@@ -263,7 +263,7 @@ export const FilterSidebar = ({
                       }}
                       placeholder={"Select Pet"}
                       options={pets}
-                      className="select-institue"
+                      className="basic-multi-select"
                       hideSelectedOptions={false}
                       onChange={(e) => {
                         setAppliedPets(e.map((item) => item.value));
@@ -285,7 +285,7 @@ export const FilterSidebar = ({
                       }}
                       placeholder={"Select Subjects"}
                       options={subjects}
-                      className="select-institue"
+                      className="basic-multi-select"
                       hideSelectedOptions={false}
                       onChange={(e) => {
                         setAppliedSubjects(e.map((item) => item.value));
@@ -305,7 +305,7 @@ export const FilterSidebar = ({
                       }}
                       placeholder={"Select Season"}
                       options={seasons}
-                      className="select-institue"
+                      className="basic-multi-select"
                       hideSelectedOptions={false}
                       onChange={(e) => {
                         setAppliedSeason(e.value);
@@ -315,62 +315,48 @@ export const FilterSidebar = ({
                 </div>
                 <div className="field-row">
                   <div className="field-col">
-                    <strong>Do you like to travel?</strong>
-                    <div className="d__flex">
-                      <div className="custom__radio-btn d__flex">
-                        <input
-                          type="radio"
-                          id="check_3"
-                          name="is_like_travel"
-                          onClick={() => {
-                            setTravel(true);
-                          }}
-                        />
-                        <label htmlFor="check_3">Yes </label>
-                      </div>
-                      <div className="custom__radio-btn  d__flex">
-                        <input
-                          type="radio"
-                          id="check_4"
-                          name="is_like_travel"
-                          defaultChecked
-                          onClick={() => {
-                            setTravel(false);
-                          }}
-                        />
-                        <label htmlFor="check_4">No </label>
-                      </div>
-                    </div>
+                    <strong>Do you have a passion for travelling?</strong>
+                    <Select
+                      closeMenuOnSelect={true}
+                      components={{
+                        animatedComponents,
+                        Placeholder,
+                        DropdownIndicator,
+                      }}
+                      placeholder={"Enter Answer"}
+                      options={[
+                        { value: true, label: "Yes" },
+                        { value: false, label: "No" },
+                      ]}
+                      className="basic-multi-select"
+                      hideSelectedOptions={false}
+                      onChange={(e) => {
+                        setTravel(e.value);
+                      }}
+                    />
                   </div>
                 </div>
                 <div className="field-row">
                   <div className="field-col">
-                    <strong>Were you ever in the military?</strong>
-                    <div className="d__flex">
-                      <div className="custom__radio-btn d__flex">
-                        <input
-                          type="radio"
-                          id="check_5"
-                          name="military"
-                          onClick={() => {
-                            setMilitary(true);
-                          }}
-                        />
-                        <label htmlFor="check_5">Yes </label>
-                      </div>
-                      <div className="custom__radio-btn  d__flex">
-                        <input
-                          type="radio"
-                          id="check_6"
-                          name="military"
-                          onClick={() => {
-                            setMilitary(false);
-                          }}
-                          defaultChecked
-                        />
-                        <label htmlFor="check_6">No </label>
-                      </div>
-                    </div>
+                    <strong>Have you had a military background?</strong>
+                    <Select
+                      closeMenuOnSelect={true}
+                      components={{
+                        animatedComponents,
+                        Placeholder,
+                        DropdownIndicator,
+                      }}
+                      placeholder={"Enter Answer"}
+                      options={[
+                        { value: true, label: "Yes" },
+                        { value: false, label: "No" },
+                      ]}
+                      className="basic-multi-select"
+                      hideSelectedOptions={false}
+                      onChange={(e) => {
+                        setMilitary(e.value);
+                      }}
+                    />
                   </div>
                 </div>
               </div>

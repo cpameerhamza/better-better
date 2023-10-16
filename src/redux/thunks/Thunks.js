@@ -262,12 +262,12 @@ export const findPenpals = createAsyncThunk("/find-penpal", async (payload) => {
   formData.append("token", payload.token);
   if (payload?.states) {
     formData.append("institute", payload?.institute);
-    formData.append("states", payload?.states);
-    formData.append("langauges", payload?.langauges);
-    formData.append("instruments", payload?.instruments);
-    formData.append("interests", payload?.interests);
-    formData.append("pets", payload?.pets);
-    formData.append("subjects", payload?.subjects);
+    formData.append("states", JSON.stringify(payload?.states));
+    formData.append("langauges", JSON.stringify(payload?.langauges));
+    formData.append("instruments", JSON.stringify(payload?.instruments));
+    formData.append("interests", JSON.stringify(payload?.interests));
+    formData.append("pets", JSON.stringify(payload?.pets));
+    formData.append("subjects", JSON.stringify(payload?.subjects));
     formData.append("season", payload?.season);
     formData.append("like_to_travel", payload?.like_to_travel);
     formData.append("military", payload?.military);
